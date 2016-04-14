@@ -1,0 +1,11 @@
+commit edc9e166fb763fe2cf901eb1f4b3b0a454d87841
+Author: Margaret Dorsey <margaretdorsey94@gmail.com>
+Date:   Thu Apr 14 13:09:07 2016 -0400
+
+    cleaned up, added gitignore for tex outputs
+
+commit 8f0169079b095fe19df1efdc5505c065637c0d8c
+Author: Margaret Dorsey <margaretdorsey94@gmail.com>
+Date:   Thu Apr 14 13:01:30 2016 -0400
+
+    first commit, outlined .tex file
