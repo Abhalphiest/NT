@@ -1,0 +1,183 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % 
+% % 		Project 0.10 	Factoring and Primality Testing
+%%
+% %	 Math 371: 		Number Theory, Spring 2016
+% % 	Author(s): 		Jodie Miu, Margaret Dorsey
+% % 	Last Updated: 	04 / 14 / 2016	(see gitlog.txt for revision history)
+% % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Title and author(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{ Factoring and Primality Testing \thanks {Math 371 Number Theory, Spring 2015, Dr. Anurag Agarwal}}
+\author{	Jodie Miu 
+        			\and
+       		 Margaret Dorsey
+	}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       
+%%	You use the following command
+ %%                 \thanks{ Message here}
+ %%   for acknowledgements, affiliations, and whatnot after your name. I don't know if we want to acknowledge the class?
+ %%		-Margaret
+ %% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% % The graphicx package allows importing of 
+% % epsf or .eps files for vector graphics.
+% %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% % I adapt the already existing abstract environment for our Introduction, because we have no abstract.
+%%		-Margaret
+% %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{intro}
+  {\renewcommand\abstractname{Introduction}\begin{abstract}}
+  {\end{abstract}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	We can change the formatting, fonts, size, etc at any time up here if necessary.
+%%		-Margaret
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % There are a lot of commands for theorems, declarations, etc.
+% %
+% % Here are some common ones. 
+%%		-Margaret
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%\newtheorem{theorem}{Theorem}
+%%\newtheorem{lemma}{Lemma}
+%%\newtheorem{proposition}{Proposition}
+%%\newtheorem{scolium}{Scolium}   %% Maybe common was an overstatement..
+%%\newtheorem{definition}{Definition}
+%%\newenvironment{proof}{{\sc Proof:}}{~\hfill QED}
+%%\newenvironment{AMS}{}{}
+%%\newenvironment{keywords}{}{}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\newpage
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%
+%%	I use the environment I made above here for our introduction.
+%%		-Margaret
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{intro}
+
+    %% Introduction goes here
+    
+\end{intro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% 	We won't use these most likely, but just so we can add them easily if needed
+%%		-Margaret
+%%
+%% \begin{keywords}
+%%  \LaTeX, typesetting
+%%  \end{keywords}
+
+%%  \begin{AMS}
+%%   50C60, 18C25
+%%  \end{AMS}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%	The paper begins...
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  \section{ sectionName }
+%%	\subsection{ name}
+%%	\subsubsection{name}
+%%	etc..
+%%  Use sectioning commands for headings. Often longer articles are divided into a few sections.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  use /par to start a new paragraph, // for a simple line break.
+%%
+%%  You must use labelling commands, e.g. \label, \ref,
+%%  \bibitem, and \cite to refer to sections of your document, such as
+%%  see Section~\ref{sectionname}, see Figure~\ref{figurename}, or bibliography entries,
+%%  such as see~\cite{citationname}.  Otherwise the look of the numbers, and sometimes the numbers
+%%  themselves, will get messed up.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{History}\label{History}
+  
+%% Writing goes here
+
+\section{Background}\label{Background}
+
+\section{Results}\label{Results}
+
+\section{Applications}\label{Applications}
+
+\section{Conclusion}\label{Conclusion}
+
+
+
+\begin{thebibliography}{9}
+
+%%
+%% Example for you
+%%
+
+     \bibitem{ name }
+         {\sc Doe, J.,}
+         {\em Title,}
+         Publication Info, Year.
+
+%%
+%% Citations go here
+%%
+
+\end{thebibliography}
+
+%%
+%% The following sections are something we should fill in together at some point,
+%% They are not important right now but are nice to have, I'm not really sure what is relevant to put there.
+%%	-Margaret
+%%
+
+\section*{About the author:}
+
+
+%%
+%%	Stuff goes here
+%%
+
+\subsection*{Margaret Dorsey}
+   Computational Mathematics, Game Design and Development, Computer Science
+   med7068@rit.edu
+
+\subsection*{Jodie Miu}
+   Computer Science
+   jm7481@rit.edu 
+
+\end{document}
