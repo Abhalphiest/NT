@@ -1,0 +1,22 @@
+Prime Factorization
+——————————————————————
+-Euclid’s algorithm
+-Fermat
+-Euler
+-Gauss
+-Legendre
+-quadratic sieve
+-elliptic curve method
+-Pollard’s methods
+-number field sieve
+
+Prime Testing
+——————————————————————
+-Fermat’s Theorem as a test for compositeness
+-Pseudoprimes
+-Eratosthenes sieve
+-Frobenius test
+-Lucas Lehmer test
+-Gauss and Jacobi sums
+-Primality test w/ Agrawal
+-Elliptic curve primality proving
