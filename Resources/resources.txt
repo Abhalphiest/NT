@@ -1,0 +1,14 @@
+Riesel, Hans
+Prime Numbers and Computer Methods for Factorization, 2nd edition
+Birkhauser Boston 1994
+ISBN 0-8176-3743-5
+
+Crandall, Richard and Pomerance, Carl
+Prime Numbers A Computational Perspective, 2nd edition
+Springer 2005
+ISBN 0-387-25282-7
+
+Koblitz, Neal
+A Course in Number Theory and Cryptography, 2nd edition
+Springer 1994
+ISBN 0-387-94293-9

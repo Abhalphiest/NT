@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % 
+% % 	Introduction Draft
+%%
+% %	 Math 371: 		Number Theory, Spring 2016
+% % 	Author(s): 		Margaret Dorsey
+% % 	Last Updated: 	04 / 16 / 2016	(see gitlog.txt for revision history)
+% % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Title and author(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{article}
+\usepackage{graphicx}
+\newenvironment{intro}
+  {\renewcommand\abstractname{Introduction}\begin{abstract}}
+  {\end{abstract}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % There are a lot of commands for theorems, declarations, etc.
+% %
+% % Here are some common ones. 
+%%		-Margaret
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%\newtheorem{theorem}{Theorem}
+%%\newtheorem{lemma}{Lemma}
+%%\newtheorem{proposition}{Proposition}
+%%\newtheorem{scolium}{Scolium}   %% Maybe common was an overstatement..
+%%\newtheorem{definition}{Definition}
+%%\newenvironment{proof}{{\sc Proof:}}{~\hfill QED}
+%%\newenvironment{AMS}{}{}
+%%\newenvironment{keywords}{}{}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  \section{ sectionName }
+%%	\subsection{ name}
+%%	\subsubsection{name}
+%%	etc..
+%%  Use sectioning commands for headings. Often longer articles are divided into a few sections.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  use /par to start a new paragraph, // for a simple line break.
+%%
+%%  You must use labelling commands, e.g. \label, \ref,
+%%  \bibitem, and \cite to refer to sections of your document, such as
+%%  see Section~\ref{sectionname}, see Figure~\ref{figurename}, or bibliography entries,
+%%  such as see~\cite{citationname}.  Otherwise the look of the numbers, and sometimes the numbers
+%%  themselves, will get messed up.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{intro}
+	\par While the identification of primes and the factorization are clearly motivated by the computational needs of cryptography in modern times, the roots of current methods can be traced back as far as Eratosthenes' sieve, developed in the $3^{rd}$ century BCE. While it is difficult to say why mathematicians continued to study factorization, save for hunger for knowledge, the findings in these areas contributed immensely to other areas of both Number Theory and other fields of mathematics, particularly in allowing for work with computation using large numbers that would otherwise have been unfeasible in a pre-computing world.
+	\par This paper attempts to illustrate the progression from the very early, intuitive results and methods of Eratosthenes, Fermat, Euler, and [ more go here] to the more sophisticated modern methods more commonly used today, such as elliptic curve methods and [more go here], while proving some of the more elementary results. The intention of the author is to build the theory of primality testing and factorization from elementary knowledge, so that a reader with a modest mathematical background may understand each method as it is introduced, with each building upon previous methods in a way that seems natural and intuitive.
+	\par Given the computational nature of the topic, some comments will be made on the computational viability of methods where appropriate, and iterative implementations of selected methods can be found in the C programming language at the GitHub repository listed under ~\ref{Resources}.
+\end{intro}
+
+\end{document}
