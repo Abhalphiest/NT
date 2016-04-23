@@ -9,6 +9,7 @@
 #
 
 
+all:
 
 
 # Fermat Test
