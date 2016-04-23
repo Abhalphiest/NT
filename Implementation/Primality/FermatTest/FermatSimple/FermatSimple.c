@@ -120,6 +120,38 @@ unsigned long powMod(unsigned long a,unsigned long pow,unsigned long m)
 }
 
 /*
+ * computes the gcd of two numbers recursively
+ *
+ * params:	a - first integer
+ *			b - second integer
+ *
+ * returns:	gcd(a,b)
+ *
+ * Author:	Margaret Dorsey
+ */
+ 
+unsigned long gcd(unsigned long a, unsigned long b)
+{
+ unsigned long r;
+ if(a > b)
+ {
+   r = a%b;
+   if(r == 0)//base case
+    return b;
+   return getgcd(r,b);
+ } 
+ else
+ {
+   r=b%a;
+   if(r == 0)
+    return a;
+   return getgcd(a,r);
+   
+ }
+
+}
+
+/*
  *
  * usageExit prints a usage error to stderr, then exits with
  * a usage error code.
