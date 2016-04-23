@@ -12,3 +12,8 @@ Koblitz, Neal
 A Course in Number Theory and Cryptography, 2nd edition
 Springer 1994
 ISBN 0-387-94293-9
+
+Giblin, Peter
+Primes and Programming (An Introduction to Number Theory with Computing)
+Cambridge University Press 1993
+ISBN 0-521-40182-8

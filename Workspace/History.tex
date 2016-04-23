@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % 
+% % 	History Draft
+%%
+% %	 Math 371: 		Number Theory, Spring 2016
+% % 	Author(s): 		Jodie Miu
+% % 	Last Updated: 	04 / 23 / 2016	(see gitlog.txt for revision history)
+% % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Title and author(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{article}
+\usepackage{graphicx}
+\newenvironment{history}
+  {\renewcommand\abstractname{History}\begin{abstract}}
+  {\end{abstract}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % There are a lot of commands for theorems, declarations, etc.
+% %
+% % Here are some common ones. 
+%%		-Margaret
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%\newtheorem{theorem}{Theorem}
+%%\newtheorem{lemma}{Lemma}
+%%\newtheorem{proposition}{Proposition}
+%%\newtheorem{scolium}{Scolium}   %% Maybe common was an overstatement..
+%%\newtheorem{definition}{Definition}
+%%\newenvironment{proof}{{\sc Proof:}}{~\hfill QED}
+%%\newenvironment{AMS}{}{}
+%%\newenvironment{keywords}{}{}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  \section{ sectionName }
+%%	\subsection{ name}
+%%	\subsubsection{name}
+%%	etc..
+%%  Use sectioning commands for headings. Often longer articles are divided into a few sections.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  use /par to start a new paragraph, // for a simple line break.
+%%
+%%  You must use labelling commands, e.g. \label, \ref,
+%%  \bibitem, and \cite to refer to sections of your document, such as
+%%  see Section~\ref{sectionname}, see Figure~\ref{figurename}, or bibliography entries,
+%%  such as see~\cite{citationname}.  Otherwise the look of the numbers, and sometimes the numbers
+%%  themselves, will get messed up.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{History}
+\par The concept of primality probably originated with the ancient Greeks over $2.5$ millennia ago.
+In fact, the very first recorded definition of prime numbers came from Euclid's \textit{Elements}
+around 300 BCE. Interestingly enough, there is indirect evidence that the concept of primality
+may have been known earlier to Pythagoras and his followers.
+
+\par The Greeks called what we know today as number theory arithmetic. The first sieve was proposed
+by Erasthosthenes (284-204 BCE). The Sieve of Erasthosthenes is the only known algorithm from
+antiquity for primes that can be called a primality test. Today, however, it is considered a highly
+inefficient test.
+
+\par The Arabs preserved much mathematics from antiquity. Ibn al-Banna (ca 1258-1334) appears to be
+the first to observe that when using the Sieve of Erasthosthenes, one can restrict attention to
+prime divisors less than $\sqrt{n}$.
+
+\par Leonardo of Pisa, more famously known as Fibonacci (ca 1170-1250), is a good example of the resurrection of
+mathematical interest in Europe during the 13th century. He was tutored by an Arab scholar while living in
+North Africa, and later published \textit{Liber Abaci}, or the \textit{Book of Calculation}. In his book,
+Fibonacci gave an algorithm to determine if $n$ is prime  by dividng $n$ by natural numbers up to $\sqrt{n}$.
+This is the first recorded instance of a deterministic algorithm, where a deterministic algorithm follows
+the same sequence of operations when executed with the same input.
+\end{History}
+
+\end{document}
