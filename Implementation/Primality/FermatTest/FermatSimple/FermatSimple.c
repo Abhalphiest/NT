@@ -138,14 +138,14 @@ unsigned long gcd(unsigned long a, unsigned long b)
    r = a%b;
    if(r == 0)//base case
     return b;
-   return getgcd(r,b);
+   return gcd(r,b);
  } 
  else
  {
    r=b%a;
    if(r == 0)
     return a;
-   return getgcd(a,r);
+   return gcd(a,r);
    
  }
 
