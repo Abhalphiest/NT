@@ -74,7 +74,7 @@ unsigned long fermatTest(unsigned long n)
  unsigned long p = n-1;  //save ourselves repeated subtraction
  while(a < UPP_BOUND)	//less costly than sqrt computation
  {
-  fprintf(stderr, "%lu %lu \n", a,powMod(a,p,n));
+  // fprintf(stderr, "%lu %lu \n", a,powMod(a,p,n));
   if(gcd(a,n) == 1 && powMod(a,p,n) != 1)
    return a;
   a++; //will try to come up with a more sophisticated way 
@@ -104,7 +104,8 @@ unsigned long powMod(unsigned long a,unsigned long pow,unsigned long m)
  { 
   if(pow%2 == 1) //odd exponent, shouldn't come up much in 
   {		//our current application but for the sake of code flexibility
-    prod *= a_pow % m;
+    prod *= a_pow;
+    prod = prod % m;
     pow--;	//pull the non power of two exponent out
 		//technically this is a reduntant line with how integer division
 		//works, but I think it makes it more clear and readable
@@ -113,7 +114,7 @@ unsigned long powMod(unsigned long a,unsigned long pow,unsigned long m)
   //we now have an even exponent, which can be written as a sum of powers
   //of two with exponents greater than 1.
    pow /= 2; //divide by two
-   a_pow = a_pow*a_pow; //square
+   a_pow = a_pow*a_pow % m; //square
    
  }
  return prod % m;
