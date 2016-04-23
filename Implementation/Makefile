@@ -15,6 +15,9 @@ all:
 # Fermat Test
 
 ######### Simple Version
+fermatsimple: Primality/FermatTest/FermatSimple/FermatSimple.c
+	gcc -o FermatSimple Primality/FermatTest/FermatSimple/FermatSimple.c
+
 
 ######### Big Data Version
 
