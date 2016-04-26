@@ -13,6 +13,7 @@
 
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{amsthm} %theorem formatting
 \newenvironment{intro}
   {\renewcommand\abstractname{Introduction}\begin{abstract}}
   {\end{abstract}}
@@ -80,13 +81,34 @@ whether a number is composite. At a first glance, it seems strange to have metho
 
 \par The Sieve of Eratosthenes is among the first algorithmic methods for factorization and primality testing. Admittedly, it is very crude, but the theoretical basis of the method gives us some of the fundamental ideas for developing further primality tests. Additionally, the Sieve of Eratosthenes also can be used for algorithmic factorization of a number - as such, we will treat it rather lightly here and revisit it in more detail when we examine factorization methods.
 
-\par The core idea of the Eratosthenes' sieve is as follows:
+\par The core use of the Eratosthenes' sieve in primality testing stems from the idea of \textit{trial division}, where given an integer $n$, we attempt to divide $n$ by every integer that could possibly be a factor. If the number divides $n$, then it is a factor of $n$, and because possible factors must be bounded above by $n$ itself, we are guaranteed a finite number of computations. In fact, we need only test factors less than $\sqrt{n}$, recovering greater factors as the quotient of a successful division by a lesser factor. Additionally, after each successful division, only the quotient need be tested further, resulting in easier computation as more factors are found. None of these facts are particularly reassuring computationally, but they provide some background for the use of our sieve.
+
+\par The sieve can be thought of as a list or array of $N - 1$ consecutive integers, beginning with $2$. We recognize that $2$ is prime, and thus every multiple of $2$ is composite. We then remove $4$,$6$, etc. from our list, and are left with $2$ and the odd integers. We then recognize $3$ as prime, and remove all multiples of $3$ in the same way. $5$ has not been removed from the list, and so it is prime, and we repeat our method. Continuing this way until the end of the set has been reached, we have constructed a set of all prime numbers up to $N$.
+
+\par It is a fair observation that this is not at all an individualized test, but rather construction of a set that will prove a number $n$ prime if $n$ is an element of the set, and composite if $n < N$ and $n$ is not in the set. This is not ideal, but combined with our method of trial division, and given that $76\%$ of odd integers have a prime factor less than $100$, precompiling a list of primes up to a certain bound and performing trial divisions of only those prime numbers on a given $n$ can prove many numbers composite without having to resort to more rigorous primality tests.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection {Fermat's Theorem and Resulting Methods}
 
+\par Among the many limitations of Eratosthenes' sieve is its lack of precision - it is impossible to simply prove a given number $n$ prime or composite with the sieve, you must construct the entire set of primes up to $n$ in the worst case to say anything about $n$ at all. We will next move to our very first formal test, a compositeness test based on a theorem of Fermat.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Fermat's Theorem}
+
+\newtheorem*{fermattheorem}{Fermat's Theorem}
+\begin{fermattheorem}
+If a positive integer $p$ is a prime and $(a,p) = 1$, then
+	$$a^{p-1} \equiv 1 \pmod p$$
+\end{fermattheorem}
+
+\par Fermat's theorem cannot be used as a primality test, as we will examine further when we define pseudoprimes, but we can use the converse of the theorem to develop a test for compositeness.
+
+\newtheorem*{fermatconverse}{Converse of Fermat's Theorem}
+\begin{fermatconverse}
+If $n$ and $a$ are positive integers such that $(a,n) = 1$ and
+	$$a^{n-1} \not\equiv 1 \pmod n,$$
+	then $n$ is not a prime. Hence $n$ is composite.
+\end{fermatconverse}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Pseudoprimes and Carmichael Numbers}
@@ -105,8 +127,6 @@ whether a number is composite. At a first glance, it seems strange to have metho
 \subsubsection{Euler Pseudoprimes}
 
 \subsubsection{Strong Pseudoprimes}
-
-\subsubsection{Implementation of a Strong Pseudoprime Test}
 
 \subsubsection{Remarks and Numerical Data}
 
