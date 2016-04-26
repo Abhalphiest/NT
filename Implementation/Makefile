@@ -17,7 +17,8 @@ all:
 ######### Simple Version
 fermatsimple: Primality/FermatTest/FermatSimple/FermatSimple.c
 	gcc -o FermatSimple Primality/FermatTest/FermatSimple/FermatSimple.c
-
+fermatbig: Primality/FermatTest/FermatBig/FermatBig.c
+	gcc -o FermatBig Primality/FermatTest/FermatBig/FermatBig.c -lgmp
 
 ######### Big Data Version
 
