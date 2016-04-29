@@ -27,11 +27,11 @@
 %%		-Margaret
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%%\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem}{Theorem}
 %%\newtheorem{lemma}{Lemma}
 %%\newtheorem{proposition}{Proposition}
 %%\newtheorem{scolium}{Scolium}   %% Maybe common was an overstatement..
-%%\newtheorem{definition}{Definition}
+\newtheorem*{definition}{Definition}
 %%\newenvironment{proof}{{\sc Proof:}}{~\hfill QED}
 %%\newenvironment{AMS}{}{}
 %%\newenvironment{keywords}{}{}
@@ -120,27 +120,132 @@ If $n$ and $a$ are positive integers such that $(a,n) = 1$ and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{ Pseudoprimes and Carmichael Numbers }
+There are composite numbers that will behave similarly to primes when Fermat's theorem is applied to them for certain $a$. We will call these composites \textit{Fermat pseudoprimes}.
+\begin{definition}
+A \textit{ Fermat pseudoprime} base $a$ is an odd composite number $m$ for which 
+$$ a^{m-1} \equiv 1 \pmod m$$  
+holds. 
+\end{definition}
 
-%%%%%%%
+ \par In general, a \textit{pseudoprime} is a composite number that behaves like a prime in the context of a primality or compositeness test. We will see other pseudoprimes in the future. If it were somehow possible to characterize all Fermat pseudoprimes for a base $a$, we could then use Fermat's Theorem with base $a$ as a primality test - this is approachable for fixed length numbers.
+ 
+ \par The question arises - can all Fermat pseudoprimes be detected through a change of base? The answer, unfortunately, is no.   There exist numbers that will be Fermat pseudoprimes base $k$ for all valid $k$, and these numbers motivate the following definition.
+ 
+ \begin{definition}
+  A composite number $n$ such that $a^{n -1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$ is called a \textit{Carmichael Number}.
+ \end{definition}
+ 
+ A Carmichael number, the smallest of which is $561$, will never be revealed as composite by a Fermat's Theorem test. The existence of Carmichael numbers are a serious hindrance of the Fermat's theorem method, although fortunately they can be characterized.
+
+\begin{theorem} $N$ is a Carmichael number if and only if $p-1$ divides $N-1$ for every prime factor of $N$, $N$ is composite, and $N$ is squarefree.
+\end{theorem}
+
+\begin{proof}
 %%
-%% A possible proof: N is a Carmichael number if and only if p-1 divides N-1 for every prime factor of N, N is composite,
-%% and N is square free.
+%% Proof goes here..
 %%
-%%%%%%%
+\end{proof}
 
-\par Pseudoprimes are composite numbers which behave like primes for some theorem $S$.
-
-\subsubsection{Computational Viability of Fermat's Theorem Methods}
 
 \subsubsection{Improvements due to Eulers Criterion}
 
-\subsubsection{Euler Pseudoprimes}
+There is clear motivation to improve our method, if possible, to avoid the problems presented by Carmichael numbers. One tool that we have at our disposal is the \textit{Euler Criterion for Quadratic Residues}, which is is stated below.
 
+\newtheorem*{eulercriterion}{Euler's Criterion for Quadratic Residues}
+\newtheorem*{eulerconverse}{Euler's Criterion as a Compositeness Test}
+
+\begin{eulercriterion}
+If $n$ is an odd prime and $(a,n) = 1$, 
+$$a^{\frac{n-1}{2}} \equiv \pm 1 \pmod n$$
+\end{eulercriterion}
+\begin{proof}
+%%
+%% If we decide we hate ourselves, we can prove this..
+%% Or we can just grab a proof from a book and reference it correctly
+%%
+\end{proof}
+
+This criterion's logical converse, much like Fermat's theorem, gives us a test for compositeness.
+\begin{eulerconverse}
+If $n$ is odd, $(a,n) = 1$, and
+	$$a^{\frac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
+	then $n$ is a composite number.
+\end{eulerconverse}
+
+To strengthen this compositeness text, we introduce \textit{Jacobi's symbol}, $( \frac{a}{n})$.
+\begin{definition}
+ Let $n$ be an odd integer with $(a,n) = 1$. 
+ $$(\frac{a}{n}) = \prod_i (\frac{a}{p_i})^{\alpha_i}$$
+ assuming that $n = \displaystyle\prod_i p_i^{\alpha_i}$. Note that we do not require that $p_i$ be prime.
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%
+%
+% Need to read up on Jacobi symbol and come back to this!
+%
+%%%%%%%%%%%%%%%%%%
+
+Thus armed with Jacobi's symbol, we can append the following to our Euler Criterion test for compositeness:
+
+\begin{eulerconverse}
+If $n$ is odd, $(a,n) = 1$, and
+	$$a^{\frac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
+	then $n$ is a composite number.
+	
+\par If $a^{\frac{n-1}{2}} \equiv \pm 1 \pmod n$ and
+	$$a^{\frac{n-1}{2}} \not\equiv (\frac{a}{n}) \pmod n$$
+	then $n$ is composite.
+	
+\par However, $a^{\frac{n-1}{2}} \equiv (\frac{a}{n}) \pmod n$ holds, the test is inconclusive.
+\end{eulerconverse}
+
+As the last line of our definition implies, this test also has pseudoprimes associated with it. We will call these \textit{Euler pseudoprimes}.
+\subsubsection{Euler Pseudoprimes}
+We define an Euler pseudoprime in an analogous way to our definition of a Fermat pseudoprime.
+\begin{definition}
+Let $n$ be an odd composite number such that
+	 $$a^{\frac{n-1}{2}} \not\equiv (\frac{a}{n}) \pmod n$$ 
+for some $a$ relatively prime to $n$.  Then $n$ is an \textit{Euler pseudoprime} base $a$.
+\end{definition}
+
+Unfortunately, there are some numbers that are both Carmichael numbers and Euler pseudoprimes. An example of one such number is $1729$ - %% flesh out this example later
+\par Despite this disappointing fact,  many Carmichael numbers are revealed as composite by Euler's criterion, and additionally, there is no analogue for Carmichael numbers in Euler pseudoprimes. If enough bases are tested, we will eventually prove an Euler pseudoprime composite.
 \subsubsection{Strong Pseudoprimes}
+
+%%%%
+%%
+%% Don't understand this as well as I thought I did - will look into later and may remove, it's not exactly the most relevant
+%% thing. I'll see if it comes up again in later methods
+%%
+%%%%
+
+\subsubsection{Computational Viability of Fermat's Theorem Methods}
+
+%%%%
+%%
+%% Will see how this turns out after implementation is done, may delete
+%%
+%%%%
 
 \subsubsection{Remarks and Numerical Data}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%
+%% Will see if we end up wanting this or needing it, may delete.
+%%
+%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% I will do more reading and then outline the rest of this section of the paper ASAP.
+
+\subsection{}
 
 
 \end{document}
