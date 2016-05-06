@@ -31,14 +31,15 @@ void fermatTest(mpz_t n, mpz_t b, mpz_t result, int id, int numThreads);
 int main(int argc, char** argv)
 {
  //Initialize MPI and fix our argc and argv
- int ierr = MPI_Init(&argc, &argv);
+ int ierr;
+ ierr = MPI_Init(&argc, &argv);
  int id, num_threads;
  ierr = MPI_Comm_rank(MPI_COMM_WORLD, &id);
  ierr  = MPI_Comm_size(MPI_COMM_WORLD, &num_threads);
  if(id == 0) //original thread
  {
   if(argc != 3)
-   usageExit("You have an incorrect number of arguments.");
+   usageExit("You have an incorrect number of arguments. \n");
  }
  //set up our really big integers
  //these need to be freed with mpz_clear() before exiting the program
@@ -48,26 +49,26 @@ int main(int argc, char** argv)
  mpz_init(b);
 
  ierr = mpz_set_str(n, argv[1], 10);
- if(ierr < 0 && id == 0)
+ if(ierr < 0)
  {
   mpz_clear(n);
   mpz_clear(b);
-  usageExit("Your n is not a valid positive integer.");
+  if(id == 0)
+  usageExit("Your n is not a valid positive integer.\n");
  }
  ierr  = mpz_set_str(b, argv[2], 10);
- if(ierr < 0 && id == 0)
+ if(ierr < 0)
  {
   mpz_clear(n);
   mpz_clear(b);
-  usageExit("Your b is not a valid positive integer.");
+  if(id == 0)
+  usageExit("Your b is not a valid positive integer.\n");
  }
  if(id != 0)
  { 
   mpz_t result;
   mpz_init(result);
- 
   fermatTest(n, b, result,id, num_threads);
-
   if(mpz_cmp_ui(result, (unsigned long int) 0) == 0)
   {
    int i = 0;
@@ -75,17 +76,19 @@ int main(int argc, char** argv)
    mpz_clear(n);
    mpz_clear(b);
    mpz_clear(result);
+   MPI_Finalize();
    return 0;
   }
   else //we found a witness
   {
    int i = 1;
-   fprintf(stdout, "%s proves %s composite.", mpz_get_str(NULL, 10, result),
+   fprintf(stdout, "%s proves %s composite.\n", mpz_get_str(NULL, 10, result),
 					      mpz_get_str(NULL,10, n));
    MPI_Send(&i, 1, MPI_INT, 0,0, MPI_COMM_WORLD); //send message to main thread
    mpz_clear(n);
    mpz_clear(b);
    mpz_clear(result);
+   MPI_Finalize();
    return 0;
   }
  }
@@ -107,7 +110,7 @@ int main(int argc, char** argv)
    num_threads--; //whoever sent us a message also exited
   }
   //no witnesses found
-  fprintf(stdout, "%s may be a prime.", mpz_get_str(NULL, 10, n));
+  fprintf(stdout, "%s may be a prime.\n", mpz_get_str(NULL, 10, n));
   mpz_clear(n);
   mpz_clear(b);
   MPI_Finalize();
@@ -143,11 +146,16 @@ void fermatTest(mpz_t n, mpz_t b, mpz_t result, int id, int numThreads)
  mpz_init(gcd);
  mpz_t powmod;
  mpz_init(powmod);
-
  while(mpz_cmp(a,b) < 0)	//havent hit the upper bound yet
  {
-  if(mpz_mod_ui(NULL, a, (unsigned long) numThreads-1) != id -1)
+//fprintf(stdout, "%s \n", mpz_get_str(NULL,10,a));
+
+  if(mpz_fdiv_ui( a, (unsigned long) numThreads-1) != id -1)
+  {
+   mpz_add_ui(a,a, (unsigned long int) 1); //could do this smarter to take
+					   //advantage of mod, but testing	
    continue; //split up the workload
+  }
   mpz_gcd(gcd,a,n); //get the gcd of a and n and store in gcd
   mpz_powm(powmod,a,p,n);
   if(mpz_cmp_ui(gcd, (unsigned long int) 1) == 0
