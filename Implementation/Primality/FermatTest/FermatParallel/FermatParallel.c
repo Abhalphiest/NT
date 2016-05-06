@@ -144,6 +144,8 @@ void fermatTest(mpz_t n, mpz_t b, mpz_t result, int id, int numThreads)
 
  while(mpz_cmp(a,b) < 0)	//havent hit the upper bound yet
  {
+  if(mpz_mod_ui(NULL, a, (unsigned long) numThreads-1) != id -1)
+   continue; //split up the workload
   mpz_gcd(gcd,a,n); //get the gcd of a and n and store in gcd
   mpz_powm(powmod,a,p,n);
   if(mpz_cmp_ui(gcd, (unsigned long int) 1) == 0
