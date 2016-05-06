@@ -32,8 +32,9 @@ int main(int argc, char** argv)
 {
  //Initialize MPI and fix our argc and argv
  int ierr = MPI_Init(&argc, &argv);
- int id = MPI_Comm_rank(MPI_COMM_WORLD, &id);
- int num_threads = MPI_Comm_size(MPI_COMM_WORLD, &numthreads);
+ int id, num_threads;
+ ierr = MPI_Comm_rank(MPI_COMM_WORLD, &id);
+ ierr  = MPI_Comm_size(MPI_COMM_WORLD, &num_threads);
  if(id == 0) //original thread
  {
   if(argc != 3)
@@ -79,8 +80,8 @@ int main(int argc, char** argv)
   else //we found a witness
   {
    int i = 1;
-   fprintf(stdout, "%s proves %s composite.", mpz_get_str(NULL, 10, result)
-					      mpz_get_str(NULL,10, n);
+   fprintf(stdout, "%s proves %s composite.", mpz_get_str(NULL, 10, result),
+					      mpz_get_str(NULL,10, n));
    MPI_Send(&i, 1, MPI_INT, 0,0, MPI_COMM_WORLD); //send message to main thread
    mpz_clear(n);
    mpz_clear(b);
@@ -109,6 +110,7 @@ int main(int argc, char** argv)
   fprintf(stdout, "%s may be a prime.", mpz_get_str(NULL, 10, n));
   mpz_clear(n);
   mpz_clear(b);
+  MPI_Finalize();
   return 0;
  } 
 }
@@ -218,8 +220,8 @@ unsigned long powMod(unsigned long a,unsigned long pow,unsigned long m)
  */
 void usageExit(char* msg)
 {
- fprintf(stderr, "Usage: FermatSimple <n>, with <n> being an integer ");
- fprintf(stderr, "to test for primality. \n %s \n", msg);
+ fprintf(stderr, "Usage: FermatParallel <n> <b>, with <n> being an integer ");
+ fprintf(stderr, "to test for primality and <b> the upper bound for checking. \n %s \n", msg);
  MPI_Finalize(); //kill all our threads
  exit(1);
 }

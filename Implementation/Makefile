@@ -20,7 +20,7 @@ fermatsimple: Primality/FermatTest/FermatSimple/FermatSimple.c
 fermatbig: Primality/FermatTest/FermatBig/FermatBig.c
 	gcc -o FermatBig Primality/FermatTest/FermatBig/FermatBig.c -lgmp
 fermatparallel: Primality/FermatTest/FermatParallel/FermatParallel.c
-	mpicc -o FermatParallel Primality/FermatTest/FermatBig/FermatBig.c -lgmp
+	mpicc -o FermatParallel Primality/FermatTest/FermatParallel/FermatParallel.c -lgmp
 ######### Big Data Version
 
 ######### Parallel Big Data Version
