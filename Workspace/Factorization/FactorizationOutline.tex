@@ -64,10 +64,32 @@
 \section{Prime Factorization}
 
 % Introduction to the subject
+\par Prime factorization is the method by which we factor an integer into its canonical prime factorization.
+For relatively small integers, this is trivial to do by hand. As these integers scale, however, this task
+becomes prohibitively expensive to compute by our modern day algorithms. In fact, the security of the RSA
+cryptographic algorithm relies on the difficulty of factoring large algorithms.
+
+\par Because factoring large integers is so computationally expensive, it is better to first determine that
+the number we want to factor is, indeed, a composite. To do this, we can use the variety of primality tests
+to ensure that our number is factorable before we start down this path.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{ Trial Division }
+\section{Classical Factorization Methods}
 
+\subsection{ Trial Division }
+\par As a factorization method, trial division is repeated division of our number $N$ by
+small primes. We store the pre-computed primes and their number in some table. This would be very
+speedy, albeit at the cost of the storage. Alternatively, we could save space by generating our 
+primes along the way, using the form $6k \pm 1$ (including $2$ and $3$).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{ Euclid's Algorithm }
+\par Interestingly enough, we can also use Euclid's algorithm to search for the factors of a
+number.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{ Fermat }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Revisit of The Sieve of Eratosthenese}
