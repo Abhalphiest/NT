@@ -73,6 +73,7 @@
 %% an indication that these will end up being covered here and not in the actual paper proper
 %% I just wanted to keep track of knowledge that will be neccessary for the reader, and this seemed appropriate
 %% - Margaret
+\subsection{Primitive Roots}
 
 
 \subsection{Quadratic Residues}
@@ -118,8 +119,16 @@ The result can be broken into two results:
 	$$a^{\frac{p-1}{2}} \equiv -1 \pmod p \text{ if and only if } a \text{ is a quadratic non-residue of } p$$
 	
 \par We begin with the second of these. Let $a$ be a quadratic non-residue of a prime $p$, and $b$ be some natural number less than $p$. $bx \equiv a$ has a unique solution $x = b^{-1}$, because $(b,p) = 1$. However, $b \not \equiv b^{-1} \pmod p$, because otherwise $b^2 \equiv a \pmod p$ contradicts the assumption that $a$ is a quadratic non-residue. Thus all natural numbers less than $p$ can be paired into $\frac{p-1}{2}$ pairs $(m,n)$ such that $mn \equiv a \pmod p$. 
-\par Multiplying these pairs together, we have a product of  $\frac{p-1}{2}$ integers all equivalent to $a$ modulo $p$, which will be equivalent to $a^{p-1}{2}$ modulo $p$ and  equal to $(p-1)!$. By Wilson's Theorem, we also have $(p-1)! \equiv -1 \pmod p$, and so 
+\par Multiplying these pairs together, we have a product of  $\frac{p-1}{2}$ integers all equivalent to $a$ modulo $p$, which will be equivalent to $a^\frac{p-1}{2}$ modulo $p$ and  equal to $(p-1)!$. By Wilson's Theorem, we also have $(p-1)! \equiv -1 \pmod p$, and so when $a$ is a quadratic non-residue of $p$, $a^\frac{p-1}{2} \equiv -1 \pmod p$.
+\par Now let $a$ be such that $a^\frac{p-1}{2} \equiv -1 \pmod p$. By Wilson's Theorem, $a^\frac{p-1}{2} \equiv (p-1)! \pmod p$, and thus this implies that the product of all natural  numbers $b < p$ produce $\frac{p-1}{2}$ factors equivalent to $a$. If any $b$ exists such that $bx \equiv a \pmod p$ has its unique solution $x$ equivalent to $b$, then $b$ will not be able to form a product equivalent to $a$ when paired with any other factor of $(p-1)!$, which is a contradiction. Thus there is no $b$ such that $b^2 \equiv a \pmod p$, and $a$ is a quadratic non-residue.
+\par Now let $a$ be a quadratic residue of $p$. We can pick a natural number $b < p$ such that $b^2 \equiv a \pmod p$, and thus $ b^{p-1} \equiv a^\frac{p-1}{2} \pmod p$. By Fermat's Theorem, we have $ a^\frac{p-1}{2} \equiv 1 \pmod p$.
+\par Finally, we examine the case that  $a^\frac{p-1}{2} \equiv 1 \pmod p$ for some arbitrary $a$ relatively prime to $p$. Let $b$ be a primitive root modulo $p$ such that $a$ can be written as $b^j$ for some $j$. From this we have $b^{j \cdot \frac{p-1}{2}} \equiv 1 \pmod p$. Because the least power of $b$ that is equivalent to $1$ modulo $p$ is $p-1$, $p -1 \mid j \cdot \frac{p-1}{2}$. Thus $j$ must be even, and $\frac{j}{2}$ is an integer. Thus we have that $(b^{\frac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must be a quadratic residue.
+	
 \end{proof}
+
+\par You may have noticed that the Legendre Symbol is only defined for a prime $p$. We define an analogue for composites, \textit{Jacobi's Symbol}, $\left( \frac{a}{n} \right)$, as $\prod_i \left( \frac{a}{p_i} \right) ^{\alpha_i}$ for $n$ an odd integer, $(a,n) = 1$, and $n = \prod_i p_i^{\alpha_i}$. 
+
+\par Recalling that we never addressed the case of the product of two quadratic non residues, it makes intuitive sense that the Jacobi symbol occasionally incorrectly takes the value $1$ for a quadratic non-residue, given it is the product of two non-residues. However, it never incorrectly identifies a quadratic residue.  Thus it can be used to quickly determine that something is not a quadratic residue modulo $n$, but cannot prove something as a quadratic residue mod $n$.
 
 \subsection{Modules}
 
