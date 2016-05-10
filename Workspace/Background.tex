@@ -14,6 +14,9 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \theoremstyle{plain}
 \newenvironment{intro}
   {\renewcommand\abstractname{Introduction}\begin{abstract}}
@@ -99,11 +102,33 @@ has solutions $x$, then $a$ is a \textit{quadratic residue} of $n$. If there are
  \par Note that we do not address the product of two non-residues.
  
  
-\end{quadraticresiduedefinition}
-\subsubsection{Legendre's Symbol and Jacobi's Symbol}
+\subsubsection{Legendre's Symbol, Euler's Criterion, and Jacobi's Symbol}
 We define Legendre's Symbol $\left( \frac{a}{p} \right)$ as a symbol given the value $1$ if $a$ is a quadratic residue of $p$ and the value $-1$ if $a$ is a quadratic non-residue of $p$, where $p$ is a prime.
-\subsubsection{Euler's Criterion}
+\par It is, of course, possible to compute Legendre's Symbol directly by trying every congruence class of $p$, but luckily there is a more elegant way, given by Euler:
+
+\newtheorem*{eulercriterion}{Euler's Criterion}
+\begin{eulercriterion}
+If $(a,p)  = 1$ and $p$ is an odd prime, then 
+	$$ \left( \frac{a}{p} \right)  \equiv a^{\frac{p-1}{2}} \pmod p$$
+\end{eulercriterion}
+\begin{proof}
+The result can be broken into two results:
+	$$a^{\frac{p-1}{2}} \equiv 1 \pmod p \text{ if and only if } a \text{ is a quadratic residue of } p$$
+	$$\text{ and }$$
+	$$a^{\frac{p-1}{2}} \equiv -1 \pmod p \text{ if and only if } a \text{ is a quadratic non-residue of } p$$
+	
+\par We begin with the second of these. Let $a$ be a quadratic non-residue of a prime $p$, and $b$ be some natural number less than $p$. $bx \equiv a$ has a unique solution $x = b^{-1}$, because $(b,p) = 1$. However, $b \not \equiv b^{-1} \pmod p$, because otherwise $b^2 \equiv a \pmod p$ contradicts the assumption that $a$ is a quadratic non-residue. Thus all natural numbers less than $p$ can be paired into $\frac{p-1}{2}$ pairs $(m,n)$ such that $mn \equiv a \pmod p$. 
+\par Multiplying these pairs together, we have a product of  $\frac{p-1}{2}$ integers all equivalent to $a$ modulo $p$, which will be equivalent to $a^{p-1}{2}$ modulo $p$ and  equal to $(p-1)!$. By Wilson's Theorem, we also have $(p-1)! \equiv -1 \pmod p$, and so 
+\end{proof}
 
 \subsection{Modules}
+
+\subsection{A Few Small Results}
+\begin{theorem}
+If $k$ is the least positive integer such that $a^k \equiv 1 \pmod n$, $a^j \equiv 1 \pmod n$, and $k < j$, then $k \mid j$.
+\end{theorem}
+\begin{proof}
+Let $k$ be the least power such that $a^k \equiv 1 \pmod n$. $j = k + m$, with $m \in \mathbb N$. if $k \nmid m$, then $m = qk+ r$, $ 0 < r < m$, and $j = (q+1)k + r$. However, $a^j = a^{(q+1)k}a^r \equiv a^r \equiv 1 \pmod n$ contradicts the minimality of $k$. Thus $k$ must divide $j$.
+\end{proof}
 
 \end{document}

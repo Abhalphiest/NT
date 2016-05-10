@@ -14,6 +14,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsthm} %theorem formatting
+\usepackage{amsfonts} % fonts
 \newenvironment{intro}
   {\renewcommand\abstractname{Introduction}\begin{abstract}}
   {\end{abstract}}
@@ -137,19 +138,26 @@ holds.
  
  A Carmichael number, the smallest of which is $561$, will never be revealed as composite by a Fermat's Theorem test. The existence of Carmichael numbers are a serious hindrance of the Fermat's theorem method, although fortunately they can be characterized.
 
-\begin{theorem} $N$ is a Carmichael number if and only if $p-1$ divides $N-1$ for every prime factor of $N$, $N$ is composite, and $N$ is squarefree.
+\begin{theorem} $n$ is a Carmichael number if and only if $p-1$ divides $n-1$ for every prime factor of $n$, $n$ is composite, and $n$ is squarefree.
 \end{theorem}
 
 \begin{proof}
-%%
-%% Proof goes here..
-%%
+First, suppose that $n$ is a composite number that square free, and $p-1 \mid N-1$ for every prime factor $p$ of $n$, and that $a$ is an arbitrary integer such that $(a,n) = 1$.
+\par $n$ is square free, so $n = p_1 p_2 p_3 \ldots p_k$. Because $a$ is relatively prime to $n$, $a$ is also relatively prime to $p_i$ for all $i \in {1, \ldots, k}$. Thus, $a^{p-1} \equiv 1 \pmod{p_i}$ for all $i$ by Fermat's Theorem. However, because $p -1 \mid n -1$, $a^{n-1} = (a^{p-1})^t \equiv (1)^t = 1 \pmod{p_i}$ for some $t \in \mathbb Z$. Because $p_i \mid a^{n-1} - 1$ for all $i$, and all $p_i$ are distinct primes, $n = p_1p_2p_3 \ldots p_k \mid a^{n-1} - 1$. Thus $a^{n-1} \equiv 1 \pmod N$ for any arbitrary $a$ relatively prime to $n$, and $n$ is a Carmichael number.
+\par
+We now suppose that a composite $n$ is a Carmichael number, so $a^{n-1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$. $n = p_1^{\alpha_1}\cdot \ldots p_k^{\alpha_k}$, and so $p_i^{\alpha_i} \mid a^{n-1} - 1 $ and $(a,p_i) = 1$ for all $i \in \{1, \ldots, k\}$. Let $r$ be an integer such that $N = p_i^{\alpha_i} r$. Obviously, $p_i^{\alpha_i}$ and $r$ are relatively prime, so by the chinese remainder theorem we have a unique solution of the system
+	$$x \equiv a_1 \pmod{p_i^{\alpha_i}}$$
+	$$x \equiv 1 \pmod{r}$$
+where $a_1$ is a primitive root of $p_i^{\alpha_i}$. 
+\par Suppose that $\alpha_i = 1$. $x$ is coprime to both $p_i$ and $r$, so we have $x \equiv a \pmod{p_i \cdot r = n}$, and so $x^{n-1} \equiv 1 \pmod n$, and so $x^{n-1} \equiv 1 \pmod p_i$ as well. However, $x^{p_i - 1} \equiv 1 \pmod{p_i}$, and $p_i - 1$ is the least power of $x$ such that $x$ is equivalent to $1$ modulo $p_i$, and so we have $p_i -1 \mid N - 1$ for all $i$. 
+\par Now suppose that $\alpha_i >1$ for some $i$, or that $n$ is not squarefree. $x^{n-1} \equiv 1 \pmod{p_i^{\alpha_i}}$, and by Euler's theorem, $x^{\phi(p_i^{\alpha_i})} = x^{p_i^{\alpha_i - 1}(p_i - 1))}  \equiv 1 \pmod{p_i^{\alpha_i}}$. Thus because $p_i^{\alpha_i -1}(p_i - 1)$ is the least power of $a_1$ equivalent to $1$ modulo $pi^{\alpha_i}$, $p_i^{\alpha_i -1}(p_i - 1) \mid n - 1$. However, $p_i^{\alpha_i - 1} \mid n - 1$ is a contradiction, because $(n, n-1) = 1$ and $p_i^{\alpha_i - 1} \mid n$. Thus $n$ must also be squarefree, and we are done. 
 \end{proof}
 
 
 \subsubsection{Improvements due to Eulers Criterion}
 
-There is clear motivation to improve our method, if possible, to avoid the problems presented by Carmichael numbers. One tool that we have at our disposal is the \textit{Euler Criterion for Quadratic Residues}, which is is stated below.
+There is clear motivation to improve our method, if possible, to avoid the problems presented by Carmichael numbers. One tool that we have at our disposal is the \textit{Euler Criterion for Quadratic Residues}, which is is stated below and proven in the Background %%ref 
+section.
 
 \newtheorem*{eulercriterion}{Euler's Criterion for Quadratic Residues}
 \newtheorem*{eulerconverse}{Euler's Criterion as a Compositeness Test}
@@ -158,12 +166,7 @@ There is clear motivation to improve our method, if possible, to avoid the probl
 If $n$ is an odd prime and $(a,n) = 1$, 
 $$a^{\frac{n-1}{2}} \equiv \pm 1 \pmod n$$
 \end{eulercriterion}
-\begin{proof}
-%%
-%% If we decide we hate ourselves, we can prove this..
-%% Or we can just grab a proof from a book and reference it correctly
-%%
-\end{proof}
+
 
 This criterion's logical converse, much like Fermat's theorem, gives us a test for compositeness.
 \begin{eulerconverse}
@@ -172,17 +175,7 @@ If $n$ is odd, $(a,n) = 1$, and
 	then $n$ is a composite number.
 \end{eulerconverse}
 
-To strengthen this compositeness test, we use \textit{Jacobi's symbol}, $( \frac{a}{n})$.
-
-
-
-%%%%%%%%%%%%%%%%%%
-%
-% Need to read up on Jacobi symbol and come back to this!
-%
-%%%%%%%%%%%%%%%%%%
-
-Thus armed with Jacobi's symbol, we can append the following to our Euler Criterion test for compositeness:
+To strengthen this compositeness test, we use \textit{Jacobi's symbol}, $( \frac{a}{n})$, over Legendre's symbol.
 
 \begin{eulerconverse}
 If $n$ is odd, $(a,n) = 1$, and
@@ -193,7 +186,7 @@ If $n$ is odd, $(a,n) = 1$, and
 	$$a^{\frac{n-1}{2}} \not\equiv (\frac{a}{n}) \pmod n$$
 	then $n$ is composite.
 	
-\par However, $a^{\frac{n-1}{2}} \equiv (\frac{a}{n}) \pmod n$ holds, the test is inconclusive.
+\par However, if $a^{\frac{n-1}{2}} \equiv (\frac{a}{n}) \pmod n$ holds, the test is inconclusive.
 \end{eulerconverse}
 
 As the last line of our definition implies, this test also has pseudoprimes associated with it. We will call these \textit{Euler pseudoprimes}.
