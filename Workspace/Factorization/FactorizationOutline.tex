@@ -85,14 +85,35 @@ primes along the way, using the form $6k \pm 1$ (including $2$ and $3$).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{ Euclid's Algorithm }
 \par Interestingly enough, we can also use Euclid's algorithm to search for the factors of a
-number.
+number. Euclid's algorithm will give us the prime factors of our number $N$ between $g$ and $G$, where
+....
+
+\par To use Euclid's algorithm to factor a number, start by multiplying together all primes between
+the two limits. In fact, there even exists precomputed products for primes within certain ranges, to
+use here should we want to. Next, we apply Euclid's algorithm on the product of the primes and our number
+$N$.
+
+\par The application of Euclid's is fast because it simply is repeated division, multiplication, and
+subtraction. The only possible tricky thing here is the initial division of our long number by $N$, but
+aside from that, it is not too difficult to perform in step-wise fashion.
+
+\par The use of Euclid's algorithm to factor numbers is not obsolete. In fact, it is used when $N$ is
+too large to be easily divided by a small prime. It is also used when only small divisors are sought.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{ Fermat }
+\par The idea behind Fermat's method of factoring is that we can write an odd composite number as a difference
+between two squares. Once we have that, it naturally gives us a factorization, in that: $N = x^2 - y^2 = (x-y)(x+y)$.
+
+\par To find the two square numbers, we start by making the observation that any $x$ that satisfies $N=x^2-y^2$ 
+must be $> \sqrt{N}$. Thus, we start with $m=\floor{\sqrt{N}}+1$, which is the smallest $x$ possible (aside
+from the case where $N$ is $x^2$).
+
+\par We consider $x=m^2-N$, checking to see if it is a square. If it is, then we have found our $x$ and $y$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A Revisit of The Sieve of Eratosthenese}
+\subsection{A Revisit of The Sieve of Eratosthenes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection {Construction of a Factor Table}
