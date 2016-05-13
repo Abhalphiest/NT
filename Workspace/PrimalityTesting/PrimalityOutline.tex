@@ -163,8 +163,8 @@ section.
 \newtheorem*{eulerconverse}{Euler's Criterion as a Compositeness Test}
 
 \begin{eulercriterion}
-If $n$ is an odd prime and $(a,n) = 1$, 
-$$a^{\frac{n-1}{2}} \equiv \pm 1 \pmod n$$
+If $p$ is an odd prime and $(a,p) = 1$, 
+$$a^{\frac{n-1}{2}} \equiv \pm 1 \pmod p$$
 \end{eulercriterion}
 
 
@@ -190,7 +190,7 @@ If $n$ is odd, $(a,n) = 1$, and
 \end{eulerconverse}
 
 As the last line of our definition implies, this test also has pseudoprimes associated with it. We will call these \textit{Euler pseudoprimes}.
-\subsubsection{Euler Pseudoprimes}
+\subsubsection{Euler Pseudoprimes and Strong Pseudoprimes}
 We define an Euler pseudoprime in an analogous way to our definition of a Fermat pseudoprime.
 \begin{definition}
 Let $n$ be an odd composite number such that
@@ -200,14 +200,30 @@ for some $a$ relatively prime to $n$.  Then $n$ is an \textit{Euler pseudoprime}
 
 Unfortunately, there are some numbers that are both Carmichael numbers and Euler pseudoprimes. An example of one such number is $1729$ - %% flesh out this example later
 \par Despite this disappointing fact,  many Carmichael numbers are revealed as composite by Euler's criterion, and additionally, there is no analogue for Carmichael numbers in Euler pseudoprimes. If enough bases are tested, we will eventually prove an Euler pseudoprime composite.
-\subsubsection{Strong Pseudoprimes}
 
-%%%%
-%%
-%% 
-%% 
-%%
-%%%%
+\par To close this section, we present a final type of pseudoprime.
+\begin{definition}
+An odd composite number $n$ with $n-1 = d\cdot2^s$, $d$ odd, is called a \textit{strong pseudoprime} for base $a$ if either
+$a^d \equiv 1 \pmod n$ or $a^{d \cdot 2r} \equiv -1 \pmod n$, for some $r \in \{0, 1, \ldots, s-1\}$. 
+\end{definition}
+
+\par This test for pseudoprimes is intended, much like Euler pseudoprimes, to eliminate the problem of Carmichael numbers in the Fermat
+Compositeness test. Indeed, any Fermat pseudoprime will be eventually proven composite by the strong pseudoprime test if enough 
+bases $a$ are tested.
+
+\par The motivation for the definition is as follows - Any Fermat pseudoprime $n$ to base $a$ will satisfy the equivalence
+	$$a^{n-1} - 1 \equiv 0 \pmod n$$
+Because we assume that $n$ is odd if it is being tested for primality, $n = 2m+1$ for some integer $m$ and we have
+	$$a^{2m} - 1 = (a^m - 1)(a^m+1) \equiv 0 \pmod(n)$$
+If $n$ is a prime, it must divide one of these factors, but it cannot divide both because then it would need to divide all linear
+combinations of them, including $(a^m - 1) - (a^m + 1) = -2$. Therefore we have 
+	$$a^m \equiv \pm 1 \pmod n$$
+We can write $n$ as $2^\alpha k + 1$, where $k$ is odd, and have 
+	$$a^{n-1} - 1 = (a^k - 1)(a^k + 1)(a^{2k} + 1) \ldots (a^{2^{\alpha - 1} k} +1)$$
+	
+\par If $n$ divides exactly one of these factors but is composite, then it is a strong pseudoprime. Interestingly, if a number is
+a strong pseudoprime to the base $a$, it will also be a Euler pseudoprime to $A$.
+
 
 
 
