@@ -4,8 +4,10 @@
 %%
 % %	 Math 371: 		Number Theory, Spring 2016
 % % 	Author(s): 		Jodie Miu, Margaret Dorsey
-% % 	Last Updated: 	04 / 14 / 2016	(see gitlog.txt for revision history)
+% % 	Last Updated: 	05 / 14 / 2016	(see gitlog.txt for revision history)
 % % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Title and author(s)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15,16 +17,7 @@
         			\and
        		 Margaret Dorsey
 	}
-	
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%       
-%%	You use the following command
- %%                 \thanks{ Message here}
- %%   for acknowledgements, affiliations, and whatnot after your name. I don't know if we want to acknowledge the class?
- %%		-Margaret
- %% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{Spring 2016}
 
 \documentclass{article}
 
@@ -32,13 +25,83 @@
 % %
 % % The graphicx package allows importing of 
 % % epsf or .eps files for vector graphics.
-% % The other packages are primarily for formatting and display of math, theorems, and definitions.
+%%
+%% hyphenat package is used to prevent hyphenation and force line breaks
+%%
+%% biblatex is for our references section,  filecontents is so I can cheat and not use a .bib file for biblatex
+%%
+%% titlesec is for making the section headings larger
+%%
+%% The other packages are primarily for formatting and display of math, theorems, and definitions.
+%%		-Margaret
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage[none]{hyphenat} 
+\usepackage{comment}
+\usepackage[numbers]{natbib}
+\usepackage{titlesec}
+\usepackage{filecontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Constructing and including the bibliography/references section
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{filecontents}{references.bib}
+@book{riesel,
+title = {{P}rime {N}umbers and {C}omputer {M}ethods for {F}actorization},
+edition = {2},
+author = {Riesel, Hans},
+publisher = {Birkhauser Boston},
+year = {1994},
+isbn = {0-8176-3743-5}
+}
+
+@book{crandall,
+title = {{P}rime {N}umbers: {A} {C}omputational {P}erspective},
+edition = {2},
+author = {Crandall, Richard and Pomerance, Carl},
+publisher = {Springer},
+year = {2005},
+isbn = {0-387-25282-7}
+}
+
+@book{koblitz,
+title = {{A} {C}ourse in {N}umber {T}heory and {C}ryptography},
+edition = {2},
+author = {Koblitz, Neal},
+publisher = {Springer},
+year = {1994},
+isbn = { 0-387-94293-9}
+}
+
+@book{giblin,
+title = {{P}rimes and {P}rogramming: {A}n {I}ntroduction to {N}umber {T}heory with {C}omputing},
+edition = {2},
+author = {Giblin, Peter},
+publisher = {Cambridge University Press},
+year = {1993},
+isbn = {0-521-40182-8}
+
+@article{historyref,
+author =       {Richard A. Mollin},
+title =        {{A} {B}rief {H}istory of {F}actoring and {P}rimality {T}esting {B}efore {C}omputers},
+ journal =      {Mathematics Magazine},
+ volume =       {75},
+ number =       {1},
+ pages =        {18-29},
+ year =         {2002},
+ url = 		 {http://www.jstor.org/stable/3219180}
+}
+
+}
+\end{filecontents}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %
 % % I adapt the already existing abstract environment for our Introduction, because we have no abstract.
@@ -55,23 +118,24 @@
 %%		-Margaret
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % There are a lot of commands for theorems, declarations, etc.
 % %
-% % Here are some common ones. 
+% % Here are some common ones. Use a * after newtheorem to disable numbering.
 %%		-Margaret
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%%\newtheorem{theorem}{Theorem}
-%%\newtheorem{lemma}{Lemma}
-%%\newtheorem{proposition}{Proposition}
-%%\newtheorem{scolium}{Scolium}   %% Maybe common was an overstatement..
-%%\newtheorem{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+%%\newtheorem*{proposition}{Proposition}
+%%\newtheorem*{scolium}{Scolium}   %% Maybe common was an overstatement.. - Margaret
+\newtheorem*{definition}{Definition}
 %%\newenvironment{proof}{{\sc Proof:}}{~\hfill QED}
-%%\newenvironment{AMS}{}{}
-%%\newenvironment{keywords}{}{}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -100,7 +164,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%%  \section{ sectionName }
+%%  \section*{ sectionName }
 %%	\subsection*{ name}
 %%	\subsubsection*{name}
 %%	etc..
@@ -110,11 +174,9 @@
 %%
 %%  use /par to start a new paragraph, // for a simple line break.
 %%
-%%  You must use labelling commands, e.g. \label, \ref,
-%%  \bibitem, and \cite to refer to sections of your document, such as
-%%  see Section~\ref{sectionname}, see Figure~\ref{figurename}, or bibliography entries,
-%%  such as see~\cite{citationname}.  Otherwise the look of the numbers, and sometimes the numbers
-%%  themselves, will get messed up.
+%%  To reference using biblatex, use \cite{name}
+%%  -Margaret
+%% 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,13 +188,20 @@
 
 In this section, we examine a few topics that will be necessary in the main paper of which the reader may be unaware. 
 
-\newtheorem*{definition}{Definition}
+
 \subsection*{Primitive Roots}
 \begin{definition}
 A number $g$ is a \textit{primitive root} modulo $m$ if every number $a$ coprime to $n$ is congruent to some power of $g$ modulo $n$. This $k$ is called the index of $a$ to the base $g$ modulo $n$.
 \end{definition}
 \par The primitive residue classes modulo $n$ have many useful properties, but we will not examine them very thoroughly - we only state without proof that $n$ has a primitive root if it is of the form $2, 4, p^k, \text{ or } 2p^k$ where $p$ is an odd prime and $k \geq 1$, and if an integer $n$ has a primitive root, then it has $\phi(\phi(n))$ of them. Additionally, the lowest power of a primitive root $a$ modulo $n$ that is equivalent to $1$ modulo $n$ is $\phi(n)$.
 
+We conclude with a small lemma that will be useful to us.
+\begin{lemma}
+If $k$ is the least positive integer such that $a^k \equiv 1 \pmod n$, $a^j \equiv 1 \pmod n$, and $k < j$, then $k \mid j$.
+\end{lemma}
+\begin{proof}
+Let $k$ be the least power such that $a^k \equiv 1 \pmod n$. $j = k + m$, with $m \in \mathbb N$. if $k \nmid m$, then $m = qk+ r$, $ 0 < r < m$, and $j = (q+1)k + r$. However, $a^j = a^{(q+1)k}a^r \equiv a^r \equiv 1 \pmod n$ contradicts the minimality of $k$. Thus $k$ must divide $j$.
+\end{proof}
 \subsection*{Quadratic Residues}
 \newtheorem*{quadraticresiduedefinition}{Quadratic Residue}
 \begin{quadraticresiduedefinition}
@@ -144,7 +213,6 @@ has solutions $x$, then $a$ is a \textit{quadratic residue} of $n$. If there are
 \par It should be noted that the condition $(a,n) = 1$ allows us to consider only the so-called \textit{primitive} residue classes modulo $n$, or those classes that are relatively prime to $n$ when searching for quadratic residues. 
 
 \par We now have a result related to quadratic residues.
- \newtheorem*{theorem}{Theorem}
  \begin{theorem}
  The product of two quadratic residues $a$ and $b$ modulo $n$ is always a quadratic residue of $n$, and the product of two quadratic non-residues $\alpha$ and $\beta$ modulo $n$ is always a quadratic non-residue.
  \end{theorem}
@@ -202,15 +270,10 @@ The result can be broken into two results:
 %Let $d$ be the smallest positive element of $M$. All multiples of $d$ must be in $M$ as well, because we can continually sum $d$ to %obtain positive multiples, and $-d$ to obtain negative multiples. Also, $d - d = 0 \in M$. Suppose that there is some integer $x$ in %$M$ that is not a multiple of $d$. Thus $ nd < x < (n+1)d$ for some $n \in \mathbb Z$. But then $x - nd \in M$ as well, and that %element is less than $d$, which condradicts the minimality of $d$. So there is no integer in $M$ that is not a multiple of the least %positive integer $d$.
 %\end{proof}
 
-\par It should be noted that the smallest module $M$ containing two integers $a$ and $b$ is the one generated by $d = (a,b)$. The proof is trivial.
+%\par It should be noted that the smallest module $M$ containing two integers $a$ and $b$ is the one generated by $d = (a,b)$. The proof is trivial.
 
-\subsection*{A Few Small Results}
-\begin{theorem}
-If $k$ is the least positive integer such that $a^k \equiv 1 \pmod n$, $a^j \equiv 1 \pmod n$, and $k < j$, then $k \mid j$.
-\end{theorem}
-\begin{proof}
-Let $k$ be the least power such that $a^k \equiv 1 \pmod n$. $j = k + m$, with $m \in \mathbb N$. if $k \nmid m$, then $m = qk+ r$, $ 0 < r < m$, and $j = (q+1)k + r$. However, $a^j = a^{(q+1)k}a^r \equiv a^r \equiv 1 \pmod n$ contradicts the minimality of $k$. Thus $k$ must divide $j$.
-\end{proof}
+
+
 
 \section*{Primality Testing}\label{Primality}
 
@@ -498,39 +561,14 @@ Elliptic curve primality testing is based on the use of the properties of the gr
 
 \section*{Conclusion}\label{Conclusion}
 
+\newpage
+
+\nocite{*}
+\bibliographystyle{plainnat}         
+\bibliography{references}
 
 
-\begin{thebibliography}{9}
 
-%%
-%% Filled these in, pretty sure the formatting is not correct for academia. Will fix when we can figure that out
-%%
-         
-   \bibitem{ Crandall }
-         {\sc Crandall, Richard \and Pomerance, Carl,}
-         {\em Prime Numbers: A Computational Perspective, $2^{nd}$ ed.}
-         Springer 2005.
-         
-   \bibitem{ Koblitz }
-         {\sc Koblitz, Neal,}
-         {\em A Course in Number Theory and Cryptography, $2^{nd}$ ed.}
-         Springer 1994.
-    
-    \bibitem{ Mollin }
-         {\sc Mollin, Richard,}
-         {\em A Brief History of Factoring and Primality Testing BC (Before Computers)}
-         Mathematics Magazine, Vol. 75 No. 1 (Feb 2002).
-         
-    \bibitem{ Riesel }
-         {\sc Riesel, Hans,}
-         {\em Prime Numbers and Computer Methods for Factorization, $2^{nd}$ ed.}
-         Birkhauser Boston 1994.
-
-%%
-%% Citations go here
-%%
-
-\end{thebibliography}
 
 %%
 %% The following sections are something we should fill in together at some point,
@@ -538,20 +576,28 @@ Elliptic curve primality testing is based on the use of the properties of the gr
 %%	-Margaret
 %%
 
-\section*{About the author:}
+\section*{About the authors:}
 
 
-%%
-%%	Stuff goes here
-%%
-
+\par This paper was written to fulfill the requirements of Math 371, Number Theory, offered by Dr. Anurag Agarwal
+in the Spring 2016 semester at Rochester Institute of Technology.
 \subsection*{Margaret Dorsey}
-   Computational Mathematics, Game Design and Development, Computer Science
-   med7068@rit.edu
+   Computational Mathematics
+   \\Game Design and Development
+   \\Computer Science
+   \\
+   \\ med7068@rit.edu
+  \\
+  \\ Responsible for all proofs provided directly in the paper in both the Background and Primality sections.
+  \\
+  \\ Author of the Introduction, Background, Primality, and  co-author of the History section.
 
 \subsection*{Jodie Miu}
    Computer Science
-   jm7481@rit.edu 
+   \\
+   \\ jm7481@rit.edu 
+   \\
+   \\ Author of the Factorization section, and co-author of the History section.
    
    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

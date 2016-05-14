@@ -1,0 +1,30 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{crandall}
+Richard Crandall and Carl Pomerance, \emph{Prime numbers: A computational
+  perspective}, 2 ed., Springer, 2005.
+
+\bibitem{giblin}
+Peter Giblin, \emph{Primes and programming: An introduction to number theory
+  with computing}, 2 ed., Cambridge University Press, 1993.
+
+\bibitem{koblitz}
+Neal Koblitz, \emph{A course in number theory and cryptography}, 2 ed.,
+  Springer, 1994.
+
+\bibitem{historyref}
+Richard~A. Mollin, \emph{A brief history of factoring and primality testing
+  before computers}, Mathematics Magazine \textbf{75} (2002), no.~1, 18--29.
+
+\bibitem{riesel}
+Hans Riesel, \emph{Prime numbers and computer methods for factorization}, 2
+  ed., Birkhauser Boston, 1994.
+
+\end{thebibliography}
