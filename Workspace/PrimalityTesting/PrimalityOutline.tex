@@ -321,16 +321,7 @@ Suppose $n$ is of the form $n = m \cdot 2^k + 1$, with $2^k > m$ and $m$ odd. If
 then $n$ is prime.
 \end{proth}
 
-There is another way to possibly ease the difficulty of factorizing $n - 1$, namely by using a different compositeness test than Fermat's
-theorem, that allows us to attempt to factorize a different number than $N - 1$, which may prove easier.  
-\subsubsection{Lucas Sequences and Lucasian Primality Tests}
-
-
-
-
-
-
-
+\par There is another way to possibly ease the difficulty of factorizing $n - 1$, namely by using a different compositeness test than Fermat's theorem, that allows us to attempt to factorize a number other than $N - 1$, which may prove easier to factor. For example, primality tests based on Lucas Sequences give an analogue to Lehmer's theorem in quadratic fields, where $N+1$ may be factored instead of $N-1$. The theory of quadratic fields is beyond the scope of this paper, and so we do not address Lucasian or similar methods, but their existence is worth noting.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,6 +332,7 @@ theorem, that allows us to attempt to factorize a different number than $N - 1$,
 \subsection{Modern Primality Tests}
 
 %% We will treat these very lightly 
+\par Of the primality tests covered in the previous section, none are of practical use for all numbers. Computationally viable methods such as P\'{e}pin's Theorem only apply to primes of a certain form, and the need for factorization and primitive roots cripples Lehmer's Theorem computationally.
 
 \subsubsection{The Jacobi Sum Primality Test}
 
