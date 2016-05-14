@@ -249,13 +249,14 @@ process. However, they are theoretically motivating, despite not being as genera
 
 \par The first method of actually proving primality that we will look at is based on a theorem by Lucas, and proven by Lehmer.
 
-\begin{theorem}
+\newtheorem*{lehmer}{Lehmer's Theorem}
+\begin{lehmer}
 Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with all $q_j$ distinct primes. If an integer $a$ exists such that 
 	$$a^\frac{n-1}{q_j} \neq 1 \pmod n \text{ for all } j = 1, \ldots, n$$
 	$$\text { and such that }$$
 	$$a^{n-1} \equiv 1\pmod n \text{, }$$
 then $n$ is a prime number.
-\end{theorem}
+\end{lehmer}
 We note that this theorem is an extension of Fermat's theorem. 
 \begin{proof}
 Consider $a^k \equiv 1 \pmod n$. The smallest such $k$ divides all possible $k$, including $n-1$. However, every divisor $k$ not equal to $n-1$ of $n-1$ divides at least one $\frac{n-1}{q_j}$. Thus if $k$ is  less than $n-1$,  $a^{\frac{n-1}{q_j}} \equiv a^{tk}\equiv 1 \pmod n$ will hold for some $q_j$. This contradicts the assumptions of the theorem, and so $k = n-1$. However, by Euler's theorem, we know that $a^{\phi(n)} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$, and that $\phi{n} < n-1$ for all composite numbers. If $\phi{n} < k$, it contradicts the assumption that $k$ is the smallest power of $a$ equivalent to $1$, and thus $\phi{n} = k = n-1$, and $n$ must be prime.
@@ -264,7 +265,6 @@ Consider $a^k \equiv 1 \pmod n$. The smallest such $k$ divides all possible $k$,
 \par From our knowledge of primitive roots, we know that any primitive root will be a suitable $a$ for Lehmer's Theorem. The problem inherent in this is that there is not an efficient, deterministic method to find primitive roots, or even quadratic non-residues. If $n$ is prime, then we will have $\phi(\phi(n)) = \phi(n-1) = (n-1) \prod (1- \frac{1}{q_j}$ primitive roots, but as the equation shows, if $n-1$ has many factors, especially many small factors, primitive roots become a smaller proportion of possible $a$ values.
 
  \par Fortunately, Selfridge provides us with a relaxed version of Lehmer's theorem such that we do not need a primitive root to prove $n$ prime.
-\subsubsection{Selfridge's Theorem}
 \begin{theorem}
 Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with $q_j$ all distinct primes.  If for every $q_j$, there is an $a_j$ such that
 	$$a_j^{\frac{n-1}{q_j} \not\equiv 1 \pmod n}$$ 
@@ -272,17 +272,66 @@ Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with $q_j$ all distinct primes.  If
 	$$a_j^{n-1} \equiv 1 \pmod n \text{, }$$
 then $n$ is a prime.
 \end{theorem}
-\subsubsection{Pepin's Theorem}
+%% possibly reference a text where someone can find the proof
+\par This allows us to perform tests with multiple bases, and prove primality usually much more quickly than Lehmer's theorem applied directly, especially for primes where the least primitive root is large.
+\par However, there is still a major stumbling block in practical applications of Lehmer's Theorem - the need to factorize $n -1$. Luckily, it is possible to relax the conditions of Lehmer's theorem in a way that allows us to only partially factorize $n-1$.
 
-\subsubsection{A Relaxed Primality Test}
+\begin{theorem}
+Let $n - 1 = r \cdot f$, where $f$ is the factorized part of $n-1$ and $r$ is the unfactorized or remaining part, $(r,f) = 1$,$r < f$. $F = \prod^n_{j=1} q_j^{\beta_j}$, with all $q_j$ distinct primes.
+\par If an integer $a$ exists such that
+	$$\text{gcd}(a^{\frac{n-1}{q_j}} - 1, N) = 1 \text{ for all } j \text{, }$$
+	$$\text{ and }$$
+	$$a^{n-1} \equiv 1 \pmod n \text{, }$$
+then $n$ is a prime number.
+\end{theorem}
 
-\subsubsection{Proth's Theorem}
+% There is an analogous theorem for factorization, the Lehmer-Pocklington Theorem.
+%%possibly reference the lehmer-pocklington theorem here, if jodie is covering it
 
-\subsubsection{Lucas Sequences}
+\subsubsection{P\'{e}pin's and Proth's Theorems}
+Another possible sidestep of the need to factor $n-1$ arises when $n$ happens to be a Fermat number, or a number of the form $2^{2^r} + 1$ (These happen to be the only sums of a power of 2 and 1 that can be prime). In this case, $n - 1$ has the minimum possible number of distinct prime factors, and thus is very suited to a Lehmer's Theorem test. In fact, for a Fermat number $n$, the requirements of Lehmer's Theorem become
+	$$a^{\frac{n - 1}{2}} = a^{2^{2^{r-1}}} \not\equiv 1 \pmod n $$
+	$$\text{ and } $$
+	$$a^{n - 1} = a^{2^{2^{r}}} \equiv 1 \pmod n \text{, }$$
+which essentially reduces to 
+	$$x^2 \equiv 1 \pmod n$$
+	$$\text{ and }$$
+	$$x \not \equiv 1 \pmod n$$
+where $x = a^{2^{2^{r-1}}}$.
 
-\subsubsection{Pocklington's Theorem}
+If $n$ is prime, then $x^2 \equiv 1 \pmod n$ will have exactly two solutions - $x \equiv \pm 1 \pmod n$. $x \equiv 1 \pmod n$ violates the conditions of Lehmer's theorem, and so $x \equiv -1 \pmod n$ when $n$ is prime. This motivates a need for an $a$ such that 
+	$$x \equiv a^{\frac{n - 1}{2}} \equiv -1 \pmod n$$
+	
+\par Noting that Euler's Criterion gives us that $a$ must be a quadratic non-residue of $n$. The fact that $3$ is a quadratic non-residue of all primes of the form $12n \pm 5$ and the observation that $2^{2^k} \equiv 4 \pmod 12$ for all $k$ motivates the idea of (but does not prove) P\'{e}pin's Theorem, which is stated below.
 
-\subsubsection{Primes of other forms}
+\newtheorem*{pepin}{P\'{e}pin's Theorem}
+\begin{pepin}
+A Fermat number $n = 2^{2^r} + 1$, $n \geq 1$ is prime if and only if 
+	$$ a^{\frac{n - 1}{2}} \equiv  - 1 \pmod n$$
+\end{pepin}
+
+It is worth mentioning that the binary computer makes the division by $n$ necessary to reduce powers of $a$ modulo $n$ very computationally simple, due to $n$ being a power of $2$ plus $1$ and therefore very simply expressed in binary. This makes P\'{e}pin's test a very attractive test for Fermat number primes. 
+
+With both  P\'{e}pin's Theorem and relaxed version of Lehmer's theorem, we obtain Proth's Theorem, stated below.
+
+\newtheorem*{proth}{Proth's Theorem}
+\begin{proth}
+Suppose $n$ is of the form $n = m \cdot 2^k + 1$, with $2^k > m$ and $m$ odd. If there exists an integer $a$ such that 
+	$$a^{\frac{n-1}{2}} \equiv -1 \pmod n \text{, }$$
+then $n$ is prime.
+\end{proth}
+
+There is another way to possibly ease the difficulty of factorizing $n - 1$, namely by using a different compositeness test than Fermat's
+theorem, that allows us to attempt to factorize a different number than $N - 1$, which may prove easier.  
+\subsubsection{Lucas Sequences and Lucasian Primality Tests}
+
+
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
