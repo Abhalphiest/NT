@@ -15,6 +15,8 @@
 \usepackage{graphicx}
 \usepackage{amsthm} %theorem formatting
 \usepackage{amsfonts} % fonts
+\usepackage{amssymb}
+\usepackage{amsmath}
 \newenvironment{intro}
   {\renewcommand\abstractname{Introduction}\begin{abstract}}
   {\end{abstract}}
@@ -237,15 +239,42 @@ a strong pseudoprime to the base $a$, it will also be a Euler pseudoprime to $A$
 
 \subsection{Proving Primality}
 
+\par In the previous section, all the methods we examined could only possibly prove compositeness - because we are unable to test
+infinitely many bases in an Euler or Strong Pseudoprime test, there is no way for us to computationally prove that a number is prime using
+these methods, only to say that it is very likely to be prime, or prove that it is composite. 
+\par In this section, we examine some methods of proving primality. These primality tests are much more complicated computationally and theoretically than compositeness tests, and unfortunately usually depend on factorization of a number, which is a slow and laborious 
+process. However, they are theoretically motivating, despite not being as generally popular as more modern primality tests.
+
 \subsubsection{Lehmer's Theorem}
 
-\subsubsection{Selfridge's Theorem}
+\par The first method of actually proving primality that we will look at is based on a theorem by Lucas, and proven by Lehmer.
 
+\begin{theorem}
+Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with all $q_j$ distinct primes. If an integer $a$ exists such that 
+	$$a^\frac{n-1}{q_j} \neq 1 \pmod n \text{ for all } j = 1, \ldots, n$$
+	$$\text { and such that }$$
+	$$a^{n-1} \equiv 1\pmod n \text{, }$$
+then $n$ is a prime number.
+\end{theorem}
+We note that this theorem is an extension of Fermat's theorem. 
+\begin{proof}
+Consider $a^k \equiv 1 \pmod n$. The smallest such $k$ divides all possible $k$, including $n-1$. However, every divisor $k$ not equal to $n-1$ of $n-1$ divides at least one $\frac{n-1}{q_j}$. Thus if $k$ is  less than $n-1$,  $a^{\frac{n-1}{q_j}} \equiv a^{tk}\equiv 1 \pmod n$ will hold for some $q_j$. This contradicts the assumptions of the theorem, and so $k = n-1$. However, by Euler's theorem, we know that $a^{\phi(n)} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$, and that $\phi{n} < n-1$ for all composite numbers. If $\phi{n} < k$, it contradicts the assumption that $k$ is the smallest power of $a$ equivalent to $1$, and thus $\phi{n} = k = n-1$, and $n$ must be prime.
+\end{proof}
+
+\par From our knowledge of primitive roots, we know that any primitive root will be a suitable $a$ for Lehmer's Theorem. The problem inherent in this is that there is not an efficient, deterministic method to find primitive roots, or even quadratic non-residues. If $n$ is prime, then we will have $\phi(\phi(n)) = \phi(n-1) = (n-1) \prod (1- \frac{1}{q_j}$ primitive roots, but as the equation shows, if $n-1$ has many factors, especially many small factors, primitive roots become a smaller proportion of possible $a$ values.
+
+ \par Fortunately, Selfridge provides us with a relaxed version of Lehmer's theorem such that we do not need a primitive root to prove $n$ prime.
+\subsubsection{Selfridge's Theorem}
+\begin{theorem}
+Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with $q_j$ all distinct primes.  If for every $q_j$, there is an $a_j$ such that
+	$$a_j^{\frac{n-1}{q_j} \not\equiv 1 \pmod n}$$ 
+	$$\text{ while }$$
+	$$a_j^{n-1} \equiv 1 \pmod n \text{, }$$
+then $n$ is a prime.
+\end{theorem}
 \subsubsection{Pepin's Theorem}
 
 \subsubsection{A Relaxed Primality Test}
-
-\subsection{Identifying Primes of a Certain Form}
 
 \subsubsection{Proth's Theorem}
 
