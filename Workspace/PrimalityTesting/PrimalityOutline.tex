@@ -332,22 +332,27 @@ then $n$ is prime.
 \subsection{Modern Primality Tests}
 
 %% We will treat these very lightly 
-\par Of the primality tests covered in the previous section, none are of practical use for all numbers. Computationally viable methods such as P\'{e}pin's Theorem only apply to primes of a certain form, and the need for factorization and primitive roots cripples Lehmer's Theorem computationally.
+\par Of the primality tests covered in the previous section, none are of practical use for all numbers. Computationally viable methods such as P\'{e}pin's Theorem only apply to primes of a certain form, and the need for factorization and primitive roots cripples Lehmer's Theorem computationally. Fortunately, there exist more suitable methods used today in primality testing. 
+\par These tests are, in general, quite theoretically and algorithmically complicated, and so we give only a brief introduction to the ideas behind modern primality tests and do not attempt to rigorously present them.
 
 \subsubsection{The Jacobi Sum Primality Test}
 
-\subsubsection{Lenstra's Theorem}
+\par The foundation of the Jacobi Sum Primality test is in its use of cyclotomic number fields. Put in the simplest terms possible, the test uses information from a combination of generalized pseudoprime tests based on Fermat's theorem, like the ones addressed earlier in this paper, in cyclotomic rings. The results of these tests is then used to construct a sieve for the possible prime divisors of a number $n$ until in the end it is proven to be its own sole prime divisor, or a prime number. 
+
+ \par Also called the Adleman-Pomerance-Rumely primality test,  the Jacobi Sum Primality test does not use random numbers like many of the more efficient primality tests, allowing it to be a deterministic primality test in exchange for computational superiority.
 
 \subsubsection{Elliptic Curve Primality Testing}
 
-\subsubsection{The Goldwasser-Kilian Test}
+Elliptic curve primality testing is based on the use of the properties of the group of points modulo $n$ on an elliptic curve. Unlike the Jacobi Sum Test, Elliptic Curve testing is probablilistic, and therefore may theoretically fail. That isn't to say that it gives the wrong answer - that would make it not a primality test - but it is possible for the algorithm to run indefinitely, never proving even a prime $n$ prime.  Despite this, elliptic curve methods are among the fastest and most popular primality testing algorithms used today.
+\par Stated very generally, elliptic curve methods use elliptic curves generated either by random integers in the case of the Goldwasser-Killian algorithm or by methods guaranteed to generate curves that will be computationally simpler for the Atkin-Morain test. The number of integer points on the curve modulo $n$ if $n$ is prime is then computed, and then tested using a probable prime $q$ determined by conditions based on $n$ and the elliptic curve selected, which combined with the criteria of the test will either prove $n$ composite, or allow us to prove $n$ prime given that we can verify the primality of $q$. Of course, the method can then be recursively applied to $q$, each time resulting in a smaller probable prime (and of course applying less computationally taxing compositeness tests to each new probable prime before returning to elliptic curves). With this recursion, we will either end up proving the compositeness of one and therefore all of our probable primes, or arriving at a well known prime and proving them all prime. 
+\par The test depends on the fact that the only non-invertible equivalence class modulo a prime is $0$, or the class containing multiples of the prime itself. The computations necessary for proving a number $n$ prime using an elliptic curve cannot be performed on a non-invertible element modulo $n$,  but if we end up encountering such an element outside of the multiples of $n$, we have shown that $n$ cannot be prime and the test can conclude. 
 
-\subsubsection{Atkin's Test}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Closing Notes on Primality Testing}
 \end{document}
