@@ -13,9 +13,7 @@
 
 \documentclass{article}
 \usepackage{graphicx}
-\newenvironment{history}
-  {\renewcommand\abstractname{History}\begin{abstract}}
-  {\end{abstract}}
+\usepackage{amsmath}
 
 
 
@@ -62,27 +60,14 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{History}
-\par The concept of primality probably originated with the ancient Greeks over $2.5$ millennia ago.
-In fact, the very first recorded definition of prime numbers came from Euclid's \textit{Elements}
-around 300 BCE. Interestingly enough, there is indirect evidence that the concept of primality
-may have been known earlier to Pythagoras and his followers.
 
-\par The Greeks called what we know today as number theory arithmetic. The first sieve was proposed
-by Erasthosthenes (284-204 BCE). The Sieve of Erasthosthenes is the only known algorithm from
-antiquity for primes that can be called a primality test. Today, however, it is considered a highly
-inefficient test.
+\par Although the computational necessity for factorization and primality testing methods is patently obvious to us in the modern 
+information age, the study and classification of primes and interest in the factorization of large numbers dates back to at least the Ancient Greeks. The notion of primes is at least as old as Euclid (circa 300 BCE), given a definition of primality is contained in his \textit{ Elements}, %%citation 
+and Eratosthenes' famous sieve, the earliest known method for algorithmic identification of primes and factorization of composites, was soon to follow in the $3^{\text{rd}}$ century BCE. 
+\par It is a fairly safe assumption that these first early forays into primality testing and factorization were more motivated by curiosity than necessity, and indeed it was not until the modern era that truly efficient and sophisticated methods were developed, but with the preservation of Greek mathematics by Arabic scholars, the theory continued to develop until the first deterministic primality test by trial division was outlined by Fibonacci in the early $13^{\text{th}}$ century. Further developments in the field of primality and factorization came with the study of perfect numbers by the Italian Cataldi, whose observations on relationship between even perfect numbers and primality were later made rigorous by Fermat, and the French Mersenne, who developed theory surrounding his famous Mersenne primes.
+\par In the $17^{\text{th}}$ century came Fermat and his ``little theorem'', which forms the basis for a vast number of primality tests, as we shall see. This result, and a few more similar to it, arose from his study of Mersenne primes and their classification, which then developed into the discovery of so called Fermat numbers, the only numbers of the form $2^n + 1$ that can be prime. Fermat was also credited for the development of the difference of squares method of factoring, a much more sophisticated method than trial division or Eratosthenes' sieve.
+\par With the $18^{\text{th}}$ century came Euler, and a veritable landslide of significant Number Theoretic results. Continuing from the work of Fermat, Euler provided many results, some covered in this paper, that further refined the theory of primality, factorization, and classification of primes. Soon after came Legendre, whose work in quadratic residues, following the work of Euler and Gauss in the same field, allowed him to develop factorization methods based on quadratic sieves, which inform some of the methods still seen today.
+\par Gauss, who had a deep interest in primality testing and factorization methods, made significant strides in the field, both extending Legendre's sieve and contributing many results and methods of his own. From Gauss, we arrive at the nineteenth and twentieth centuries and the work of Reuschle, Landry, Lucas, and Lehmer, all of whom significantly contributed to the more contemporary methods for factorization and primality testing, and with the advent of the computer age, the development of truly modern methodologies was not far behind. 
+\par It is unlikely that many of the mathematicians that built the foundations of primality and factorization theory had any idea that it would become such an important area of work in its own right, but the fact that other problems in Number Theory and simple curiosity motivated their study long before use in cryptographic systems and big data remains. Although many of the results discussed in this paper are stated without context, it is useful to remember that most of these results were developed for a wide variety of purposes, very few of which align with their current applications, and that the sophisticated methods of today developed only after centuries of refinements made to the crude techniques of trial division and straightforward sieves.
 
-\par The Arabs preserved much mathematics from antiquity. Ibn al-Banna (ca 1258-1334) appears to be
-the first to observe that when using the Sieve of Erasthosthenes, one can restrict attention to
-prime divisors less than $\sqrt{n}$.
-
-\par Leonardo of Pisa, more famously known as Fibonacci (ca 1170-1250), is a good example of the resurrection of
-mathematical interest in Europe during the 13th century. He was tutored by an Arab scholar while living in
-North Africa, and later published \textit{Liber Abaci}, or the \textit{Book of Calculation}. In his book,
-Fibonacci gave an algorithm to determine if $n$ is prime  by dividng $n$ by natural numbers up to $\sqrt{n}$.
-This is the first recorded instance of a deterministic algorithm, where a deterministic algorithm follows
-the same sequence of operations when executed with the same input.
-\end{History}
-
-\end{document}
+ \end{document}

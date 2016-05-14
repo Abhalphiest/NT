@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  14 MAY 2016 11:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  14 MAY 2016 14:21
 entering extended mode
 **C:/Users/Margaret/Google*Drive/Spring2016/MATH371/Project/371paper_MiuDorsey.
 tex
@@ -188,18 +188,18 @@ LaTeX Warning: Tab has been converted to Blank Space.
 
 ("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\371paper_MiuDorsey.
 aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
  ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
@@ -214,81 +214,99 @@ LaTeX Font Info:    ... okay on input line 142.
 \makeMPintoPDFobject=\count106
 \everyMPtoPDFconversion=\toks29
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 144.
+LaTeX Font Info:    Try loading font information for U+msa on input line 146.
  ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 144.
+LaTeX Font Info:    Try loading font information for U+msb on input line 146.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (2.25986pt too wide) in paragraph at lines 157--158
+Overfull \hbox (2.25986pt too wide) in paragraph at lines 159--160
 \OT1/cmr/m/n/9 math-e-mat-i-cal back-ground may un-der-stand each method as it 
 is in-tro-duced,
+ []
+
+
+Overfull \hbox (2.22285pt too wide) in paragraph at lines 190--191
+\OT1/cmr/m/n/10 rig-or-ous by Fer-mat, and the French Mersenne, who de-vel-oped
+ the-ory sur-round-ing
  []
 
 [1
 
 {C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (0.65778pt too wide) in paragraph at lines 220--223
+Overfull \hbox (3.70895pt too wide) in paragraph at lines 193--194
+[]\OT1/cmr/m/n/10 Gauss, who had a deep in-ter-est in pri-mal-ity test-ing and 
+fac-tor-iza-tion meth-ods,
+ []
+
+
+Overfull \hbox (18.50066pt too wide) in paragraph at lines 193--194
+\OT1/cmr/m/n/10 made sig-nif-i-cant strides in the field, both ex-tend-ing Leg-
+en-dre's sieve and con-tribut-ing
+ []
+
+[2]
+Overfull \hbox (0.65778pt too wide) in paragraph at lines 229--232
 []\OT1/cmr/m/n/10 Suppose that two in-te-gers $\OML/cmm/m/it/10 a$ \OT1/cmr/m/n
 /10 and $\OML/cmm/m/it/10 a$ \OT1/cmr/m/n/10 both rel-a-tively prime to $\OML/c
 mm/m/it/10 n$ \OT1/cmr/m/n/10 are quadratic
  []
 
-[2] [3]
-Overfull \hbox (1.05618pt too wide) in paragraph at lines 290--291
+[3] [4]
+Overfull \hbox (1.05618pt too wide) in paragraph at lines 299--300
 []\OT1/cmr/m/n/10 In ad-di-tion to these pri-mal-ity tests, which never fail on
  de-ter-min-ing pri-mal-ity,
  []
 
-[4]
-Overfull \hbox (18.33398pt too wide) in paragraph at lines 299--300
+[5]
+Overfull \hbox (18.33398pt too wide) in paragraph at lines 308--309
 []\OT1/cmr/m/n/10 The Sieve of Er-atos-thenes is among the first al-go-rith-mic
  meth-ods for fac-tor-iza-tion
  []
 
-[5]
-Overfull \hbox (3.26904pt too wide) in paragraph at lines 343--344
+[6]
+Overfull \hbox (3.26904pt too wide) in paragraph at lines 352--353
 \OT1/cmr/m/n/10 in the fu-ture. If it were some-how pos-si-ble to char-ac-ter-i
 ze all Fer-mat pseu-do-primes
  []
 
-[6] [7] [8] [9] [10] [11]
-Overfull \hbox (7.11172pt too wide) in paragraph at lines 545--546
+[7] [8] [9] [10] [11] [12]
+Overfull \hbox (7.11172pt too wide) in paragraph at lines 554--555
 []\OT1/cmr/m/n/10 These tests are, in gen-eral, quite the-o-ret-i-cally and al-
 go-rith-mi-cally com-pli-cated,
  []
 
-[12] [13]
+[13] [14] [15]
 ("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\371paper_MiuDorsey.
 bbl")
-Underfull \hbox (badness 10000) in paragraph at lines 585--594
+Underfull \hbox (badness 10000) in paragraph at lines 594--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 585--594
+Underfull \hbox (badness 10000) in paragraph at lines 594--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 585--594
+Underfull \hbox (badness 10000) in paragraph at lines 594--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--601
+Underfull \hbox (badness 10000) in paragraph at lines 605--610
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--601
+Underfull \hbox (badness 10000) in paragraph at lines 605--610
 
  []
 
-[14]
+[16]
 ("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\371paper_MiuDorsey.
 aux") ) 
 Here is how much of TeX's memory you used:
@@ -298,7 +316,7 @@ Here is how much of TeX's memory you used:
  6100 multiletter control sequences out of 15000+200000
  14707 words of font info for 56 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,28p,1144b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,28p,1131b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX/fonts
@@ -316,9 +334,9 @@ ts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on 371paper_MiuDorsey.pdf (14 pages, 267770 bytes).
+Output written on 371paper_MiuDorsey.pdf (16 pages, 272588 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
+ 130 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
