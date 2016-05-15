@@ -46,6 +46,7 @@
 \usepackage{titlesec}
 \usepackage{filecontents}
 \usepackage{nicefrac}
+\usepackage{indentfirst}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -89,6 +90,14 @@ author = {Giblin, Peter},
 publisher = {Cambridge University Press},
 year = {1993},
 isbn = {0-521-40182-8}
+
+@book{niven,
+title = {{A}n {I}ntroduction to the {T}heory of {N}umbers},
+edition = {5},
+author = {Niven, Ivan and Zuckerman, Herbert and Montgomery, Hugh},
+publisher = {John Wiley and Sons},
+year = {1991},
+isbn = {0-471-62546-9}
 
 @article{historyref,
 author =       {Richard A. Mollin},
@@ -161,6 +170,18 @@ title =        {{A} {B}rief {H}istory of {F}actoring and {P}rimality {T}esting {
 	\par Given the computational nature of the topic, some comments will be made on the computational viability of methods where appropriate. 
 \end{intro}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%
 %%	The paper begins...
 %%%%%%%%%%%%%%%%%%%%%%
@@ -181,7 +202,7 @@ title =        {{A} {B}rief {H}istory of {F}actoring and {P}rimality {T}esting {
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{History}\label{History}
+\section{History}\label{History}
   
 \par Although the computational necessity for factorization and primality testing methods is patently obvious to us in the modern 
 information age, the study and classification of primes and interest in the factorization of large numbers dates back to at least the Ancient Greeks. The notion of primes is at least as old as Euclid (circa 300 BCE), considering a definition of primality is contained in his \textit{ Elements} \citep{historyref}, and Eratosthenes' famous sieve, the earliest known method for algorithmic identification of primes and factorization of composites, was soon to follow in the $3^{\text{rd}}$ century BCE. 
@@ -191,7 +212,18 @@ information age, the study and classification of primes and interest in the fact
 \par Gauss, who had a deep interest in primality testing and factorization methods, also made significant strides in the field, both extending Legendre's sieve and contributing many results and methods of his own. After Gauss came the nineteenth and twentieth centuries and the work of Reuschle, Landry, Lucas, and Lehmer, all of whom significantly contributed to the more contemporary methods for factorization and primality testing, and with the advent of the computer age, the development of truly modern methodologies was not far behind. 
 \par It is unlikely that many of the mathematicians that built the foundations of primality testing and factorization methods had any idea that it would become such an important area of study in its own right, but the fact that their study was motivated by other problems and pursuits long before use in cryptographic systems and big data remains. Although many of the results discussed in this paper are stated without context, it is useful to remember that they were generally developed for a wide variety of purposes, very few of which align with their current applications, and that the sophisticated methods of today developed only after centuries of refinements made to the crude elementary techniques of trial division and straightforward sieves.
 
-\section*{Background}\label{Background}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Background}\label{Background}
 
 In this section, we examine a few topics that will be necessary in the main paper of which the reader may be unaware. 
 
@@ -273,7 +305,7 @@ Thus we have that $(b^{\nicefrac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must 
 \par From our earlier classification of the products of quadratic residues and quadratic non-residues, it can be concluded that if $n$ has a primitive root, then 
 \[ \left(\dfrac{a}{n} \right) \left( \dfrac{b}{n} \right) = \left(\dfrac{ab}{n} \right) \]
 
-\par Recalling that we never addressed the case of the product of two quadratic non residues of other composite numbers, it makes intuitive sense that the Jacobi symbol occasionally incorrectly takes the value $1$ for a quadratic non-residue, given it is the product of two non-residues. However, it never incorrectly identifies a quadratic residue.  Thus it can be used to quickly determine that something is not a quadratic residue modulo $n$, but cannot prove something as a quadratic residue mod $n$ alone. More on the theory of quadratic residues can be found  in nearly any elementary Number Theory textbook.
+\par Recalling that we never addressed the case of the product of two quadratic non residues of other composite numbers, it makes intuitive sense that the Jacobi symbol occasionally incorrectly takes the value $1$ for a quadratic non-residue, given it is the product of two non-residues. However, it never incorrectly identifies a quadratic residue.  Thus it can be used to quickly determine that something is not a quadratic residue modulo $n$, but cannot prove something as a quadratic residue mod $n$ alone. More on the theory of quadratic residues can be found  in nearly any elementary Number Theory textbook, including \citep{niven}.
 
 %\subsection*{Modules}
 
@@ -292,46 +324,50 @@ Thus we have that $(b^{\nicefrac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must 
 
 %\par It should be noted that the smallest module $M$ containing two integers $a$ and $b$ is the one generated by $d = (a,b)$. The proof is trivial.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
 
+\section{Primality Testing}\label{Primality}
 
-\section*{Primality Testing}\label{Primality}
-
-% Introduction to the subject
-\par First, we will treat the various methods of determining whether or not a number is prime, or, as is usually easier, determining
-whether a number is composite. At first glance, it seems strange to have methods for such a thing that are distinct from factorization methods - after all, if you can obtain the prime factorization of a number, it is trivial to determine primality from that factorization. However, factorization methods are in general very computationally expensive compared to some of the methods we will examine in this section. 
+\par First, we will treat the various methods of determining whether or not a number is prime, or attempting to show that a number is composite, which is generally a much more approachable problem. At first glance, it seems strange to have methods for primality testing that are distinct from factorization methods - after all, if you can obtain the prime factorization of a number, it is trivial to determine primality from that factorization. However, factorization methods are in general more computationally expensive and difficult than the methods we will examine in this section. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{ Primality Tests and Composite Tests }
 
-\par Any viable computational method for testing primality explicitly is composed of a condition on a number $n$ that, when met, necessitates that $n$ is prime. Thus if the condition is not met, $n$ is composite. Such tests are certainly extremely convenient to directly determine the primality of $n$, but unfortunately methods of this form are usually a combination of very complex and restricted to $n$ of a particular form or within some bounded range.
+\par Any viable algorithmic method for testing primality straightforwardly is essentially a condition on a number $n$ that, when met, necessitates that $n$ is prime. Thus if the condition is not met, $n$ is composite. Such tests are certainly extremely convenient to directly determine the primality of $n$, but unfortunately methods of this form are usually rather complex and usually restricted to $n$ either of a particular form or within some bounded range. We call these tests \textit{primality tests}.
 
-\par In addition to these primality tests, which never fail on determining primality, we also have many tests that are comparatively simple and computationally efficent, which occasionally fail to identify primes, but never indicate that a composite number is prime. We will call these tests, which never fail on determining compositeness, compositeness tests.
+\par In addition to primality tests, which never incorrectly indicate primality, we also have many tests that are comparatively simple and computationally efficent, which occasionally fail to identify primes as prime, but never indicate that a composite number is a prime. We will call these tests, which never incorrectly indicate compositeness \textit{compositeness tests}.
 
-\par It is of the utmost importance to note, before moving on, that while the conditions of a primality or compositeness test being met guarantees that the number is either prime or composite respectively, and a failed primality test proves compositeness, a failed compositeness test does not necessitate that the number is prime.
+\par It is of the utmost importance to note before moving on that while the conditions of a primality or compositeness test being met guarantees that the number is either prime or composite respectively, and a failed primality test proves compositeness, a failed compositeness test does \textit{not} necessitate that the number is prime.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{ The Sieve of Eratosthenes }
 
-\par Sieving is a process where a series of operations are applied to every number in a large, regularly spaced set of integers in order to find numbers with certain characteristics.
+\par Sieving, in general, is a process where a series of operations are applied to every number in a large, regularly spaced set of integers in order to find numbers with certain characteristics.
 
-\par The Sieve of Eratosthenes is among the first algorithmic methods for factorization and primality testing. Admittedly, it is very crude, but the theoretical basis of the method gives us some of the fundamental ideas for developing further primality tests. Additionally, the Sieve of Eratosthenes also can be used for algorithmic factorization of a number - as such, we will treat it rather lightly here and revisit it in more detail when we examine factorization methods.
+\par The Sieve of Eratosthenes is considered the first algorithmic method developed for factorization and primality testing. As such, it is admittedly very crude, but the theoretical basis of the method gives us some perspective on the properties and distribution of prime numbers, and of the fundamental ideas upon which further primality tests can be built. Because the Sieve of Eratosthenes is more generally suitable for algorithmic factorization of a number, we will treat it rather lightly here and revisit it in more detail when we examine factorization methods.
 
-\par The core use of the Eratosthenes' sieve in primality testing stems from the idea of \textit{trial division}, where given an integer $n$, we attempt to divide $n$ by every integer that could possibly be a factor. If the number divides $n$, then it is a factor of $n$, and because possible factors must be bounded above by $n$ itself, we are guaranteed a finite number of computations. In fact, we need only test factors less than $\sqrt{n}$, recovering greater factors as the quotient of a successful division by a lesser factor. Additionally, after each successful division, only the quotient need be tested further, resulting in easier computation as more factors are found. None of these facts are particularly reassuring computationally, but they provide some background for the use of our sieve.
+\par The applicability of Eratosthenes' sieve to primality testing stems from the idea of \textit{trial division}, where given an integer $n$, we attempt to divide $n$ by every integer that could possibly be a factor. If the number divides $n$, then it is a factor of $n$, and because possible factors must be bounded above by $n$ itself, we are guaranteed a finite number of computations. In fact, we need only test factors less than $\sqrt{n}$, recovering greater factors as the quotient of a successful division by a lesser factor. Additionally, after each successful division, only the quotient need be tested further, resulting in easier computation as more factors are found (although for our purposes we have no need to ever find more than one factor). None of these facts are particularly reassuring computationally, but they provide some background for the use of our sieve.
 
-\par The sieve can be thought of as a list or array of $N - 1$ consecutive integers, beginning with $2$. We recognize that $2$ is prime, and thus every multiple of $2$ is composite. We then remove $4$,$6$, etc. from our list, and are left with $2$ and the odd integers. We then recognize $3$ as prime, and remove all multiples of $3$ in the same way. $5$ has not been removed from the list, and so it is prime. We then repeat our method. Continuing this way until the end of the set has been reached, we have constructed a set of all prime numbers up to $N$.
+\par The sieve can be thought of as a list or array of $N - 1$ consecutive integers, beginning with $2$. We recognize that $2$ is prime, and thus every multiple of $2$ is composite. We then remove $4$,$6$, etc. from our list, and are left with $2$ and the odd integers. We then recognize $3$ as prime, because it is still in the list, and remove all multiples of $3$ in the same way. $5$ has not been removed from the list, and so it is prime. We then repeat our method. Continuing this way until the end of the set has been reached, we have constructed a set of all prime numbers up to $N$. It is intuitive that slight modifications to this process can provide the least prime factors, or even the entire factorization, of all numbers up to $N$ as well.
 
-\par Note that the sieve has other modifications that can be made to find things like -- the least prime factor of each composite up to $N$, or even the complete factorizations of the numbers in the sieve.
-
-\par It is a fair observation that this is not at all an individualized test, but rather construction of a set that will prove a number $n$ prime if $n$ is an element of the set, and composite if $n < N$ and $n$ is not in the set. This is not ideal, but combined with our method of trial division, and given that $76\%$ of odd integers have a prime factor less than $100$, precompiling a list of primes up to a certain bound and performing trial divisions of only those prime numbers on a given $n$ can prove many numbers composite without having to resort to more rigorous primality tests.
+\par It is a fair observation that this is not a test that can be applied to a single number, but rather construction of a set that will prove a number $n$ prime if $n$ is an element of the set, and composite if $n < N$ and $n$ is not in the set. This is not ideal, but combined with our method of trial division, and given that $76\%$ of odd integers have a prime factor less than $100$ \citep{riesel}, precompiling a list of primes up to a certain bound and performing trial divisions of only those prime numbers on a given $n$ can prove many numbers composite without having to resort to more rigorous compositeness or primality tests.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection* {Fermat's Theorem and Resulting Methods}
 
-\par Among the many limitations of Eratosthenes' sieve is its lack of precision - it is impossible to simply prove a given number $n$ prime or composite with the sieve, you must construct the entire set of primes up to $n$ in the worst case to say anything about $n$ at all. We will next move to our very first formal test, a compositeness test based on a theorem of Fermat.
-
-\par In passing through the list, we are adding $p$ to find the next multiple. In addition to that, we noted earlier that we are guaranteed a finite number of computations. Therefore, this sieve has the benefit of not being particularly computationally intensive. In practice, the problem is the amount of memory it can consume. This is dependent upon the size of the list of numbers. There are work-arounds for this, like array segmentation, but this may affect the efficiency of the sieve.
+\par Among the many limitations of Eratosthenes' sieve is its lack of precision - it is impossible to simply prove a given number $n$ prime or composite, you must construct the entire set of primes up to $n$ in the worst case to say anything about $n$ at all. To remedy this problem, we move on to another elementary method that can test $n$ directly, a compositeness test based on a theorem of Fermat.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection*{Fermat's Theorem}
@@ -348,21 +384,23 @@ If a positive integer $p$ is a prime and $(a,p) = 1$, then
 \begin{fermatconverse}
 If $n$ and $a$ are positive integers such that $(a,n) = 1$ and
 	$$a^{n-1} \not\equiv 1 \pmod n,$$
-	then $n$ is not a prime. Hence $n$ is composite.
+	then $n$ cannot be prime. Hence $n$ is composite.
 \end{fermatconverse}
+
+\par This simple compositeness test will prove very useful to us, given its theoretical and computational simplicity and the relative ease of multiplication
+of integers modulo $n$. Of course, one of the foremost weaknesses of Fermat compositeness tests is immediately apparent - the need for an appropriate $a$. As we will see in the very next section, not every $a$ satisfying the conditions will prove a composite $n$ composite. For now, we will assume that we simply iterate through all $a$ relatively prime to $n$, searching for an $a$ that proves $n$ composite. This is, of course, not a bounded process, and so in practice we would establish an upper bound for $a$ which would result in an inconclusive test if reached before a suitable $a$ is found. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{ Pseudoprimes and Carmichael Numbers }
-There are composite numbers that will behave similarly to primes when Fermat's theorem is applied to them for certain $a$. We will call these composites \textit{Fermat pseudoprimes}.
+To expand upon our problem with the infinitude of possible $a$ values, there are composite numbers that will behave similarly to primes when Fermat's theorem is applied to them for certain $a$. We will call these composites \textit{Fermat pseudoprimes base $a$}.
 \begin{definition}
 A \textit{ Fermat pseudoprime} base $a$ is an odd composite number $m$ for which 
-$$ a^{m-1} \equiv 1 \pmod m$$  
-holds. 
+$$ a^{m-1} \equiv 1 \pmod m \text{ holds.}$$  
 \end{definition}
 
- \par In general, a \textit{pseudoprime} is a composite number that behaves like a prime in the context of a primality or compositeness test. We will see other pseudoprimes in the future. If it were somehow possible to characterize all Fermat pseudoprimes for a base $a$, we could then use Fermat's Theorem with base $a$ as a primality test - this is approachable for fixed length numbers.
+ \par In general, a \textit{pseudoprime} is a composite number that behaves like a prime in the context of a compositeness test (we will see other pseudoprimes very soon.) Interestingly, if all Fermat pseudoprimes could be identified for a fixed base $a$, we could then use Fermat's Theorem with only base $a$ as a primality test. Unfortunately, this cannot be generally accomplished, but in computational applications this idea is exploited for fast primality testing of $n$ of a fixed length by classifying all Fermat pseudoprimes base $a$ up to some upper bound $N > n$, applying Fermat's test to $n$, and checking to see if it is among the pseudoprimes if it is not proven composite. This rather practical sidestep of the limitations of a compositeness test is extremely useful for comparatively small $n$.
  
- \par The question arises - can all Fermat pseudoprimes be detected through a change of base? The answer, unfortunately, is no.   There exist numbers that will be Fermat pseudoprimes base $k$ for all valid $k$, and these numbers motivate the following definition.
+ \par The existence of Fermat pseudoprimes prompts a question - can all Fermat pseudoprimes be proven composite eventually, given enough bases $a$ are tested? The answer, unfortunately, is no. There exist numbers that will be Fermat pseudoprimes base $a$ for all valid $a$, and these \textit{ Carmichael numbers} are explicitly defined as follows:
  
  \begin{definition}
   A composite number $n$ such that $a^{n -1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$ is called a \textit{Carmichael Number}.
@@ -576,10 +614,21 @@ Elliptic curve primality testing is based on the use of the properties of the gr
 \par Stated very generally, elliptic curve methods use elliptic curves generated either by random integers in the case of the Goldwasser-Killian algorithm or by methods guaranteed to generate curves that will be computationally simpler for the Atkin-Morain test. The number of integer points on the curve modulo $n$ if $n$ is prime is then computed, and then tested using a probable prime $q$ determined by conditions based on $n$ and the elliptic curve selected, which combined with the criteria of the test will either prove $n$ composite, or allow us to prove $n$ prime given that we can verify the primality of $q$. Of course, the method can then be recursively applied to $q$, each time resulting in a smaller probable prime (and of course applying less computationally taxing compositeness tests to each new probable prime before returning to elliptic curves). With this recursion, we will either end up proving the compositeness of one and therefore all of our probable primes, or arriving at a well known prime and proving them all prime. 
 \par The test depends on the fact that the only non-invertible equivalence class modulo a prime is $0$, or the class containing multiples of the prime itself. The computations necessary for proving a number $n$ prime using an elliptic curve cannot be performed on a non-invertible element modulo $n$,  but if we end up encountering such an element outside of the multiples of $n$, we have shown that $n$ cannot be prime and the test can conclude. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Factorization}\label{Factorization}
 
-\section*{Conclusion}\label{Conclusion}
+\section{Factorization}\label{Factorization}
+
+\section{Conclusion}\label{Conclusion}
 
 \newpage
 
