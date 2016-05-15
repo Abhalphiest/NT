@@ -1,30 +1,41 @@
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\begin{thebibliography}{1}
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{crandall}
-Richard Crandall and Carl Pomerance, \emph{Prime numbers: A computational
-  perspective}, 2 ed., Springer, 2005.
+\bibitem[Crandall and Pomerance(2005)]{crandall}
+Richard Crandall and Carl Pomerance.
+\newblock \emph{{P}rime {N}umbers: {A} {C}omputational {P}erspective}.
+\newblock Springer, 2 edition, 2005.
+\newblock ISBN 0-387-25282-7.
 
-\bibitem{giblin}
-Peter Giblin, \emph{Primes and programming: An introduction to number theory
-  with computing}, 2 ed., Cambridge University Press, 1993.
+\bibitem[Giblin(1993)]{giblin}
+Peter Giblin.
+\newblock \emph{{P}rimes and {P}rogramming: {A}n {I}ntroduction to {N}umber
+  {T}heory with {C}omputing}.
+\newblock Cambridge University Press, 2 edition, 1993.
+\newblock ISBN 0-521-40182-8.
 
-\bibitem{koblitz}
-Neal Koblitz, \emph{A course in number theory and cryptography}, 2 ed.,
-  Springer, 1994.
+\bibitem[Koblitz(1994)]{koblitz}
+Neal Koblitz.
+\newblock \emph{{A} {C}ourse in {N}umber {T}heory and {C}ryptography}.
+\newblock Springer, 2 edition, 1994.
+\newblock ISBN 0-387-94293-9.
 
-\bibitem{historyref}
-Richard~A. Mollin, \emph{A brief history of factoring and primality testing
-  before computers}, Mathematics Magazine \textbf{75} (2002), no.~1, 18--29.
+\bibitem[Mollin(2002)]{historyref}
+Richard~A. Mollin.
+\newblock {A} {B}rief {H}istory of {F}actoring and {P}rimality {T}esting
+  {B}efore {C}omputers.
+\newblock \emph{Mathematics Magazine}, 75\penalty0 (1):\penalty0 18--29, 2002.
+\newblock URL \url{http://www.jstor.org/stable/3219180}.
 
-\bibitem{riesel}
-Hans Riesel, \emph{Prime numbers and computer methods for factorization}, 2
-  ed., Birkhauser Boston, 1994.
+\bibitem[Riesel(1994)]{riesel}
+Hans Riesel.
+\newblock \emph{{P}rime {N}umbers and {C}omputer {M}ethods for
+  {F}actorization}.
+\newblock Birkhauser Boston, 2 edition, 1994.
+\newblock ISBN 0-8176-3743-5.
 
 \end{thebibliography}

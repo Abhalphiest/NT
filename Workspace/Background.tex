@@ -71,18 +71,23 @@
 
 
 In this section, we examine a few topics that will be necessary in the main paper of which the reader may be unaware. 
-%% This is by no means a definitive list or even
-%% an indication that these will end up being covered here and not in the actual paper proper
-%% I just wanted to keep track of knowledge that will be neccessary for the reader, and this seemed appropriate
-%% - Margaret
-\newtheorem*{definition}{Definition}
-\subsection{Primitive Roots}
+
+
+\subsection*{Primitive Roots}
 \begin{definition}
 A number $g$ is a \textit{primitive root} modulo $m$ if every number $a$ coprime to $n$ is congruent to some power of $g$ modulo $n$. This $k$ is called the index of $a$ to the base $g$ modulo $n$.
 \end{definition}
-\par The primitive residue classes modulo $n$ have many useful properties, but we will not examine them very thoroughly - we only state without proof that $n$ has a primitive root if it is of the form $2, 4, p^k, \text{ or } 2p^k$ where $p$ is an odd prime and $k \geq 1$, and if an integer $n$ has a primitive root, then it has $\phi(\phi(n))$ of them. Additionally, the lowest power of a primitive root $a$ modulo $n$ that is equivalent to $1$ modulo $n$ is $\phi(n)$.
+\par The primitive residue classes modulo $n$ have many useful properties, but we will not examine them very thoroughly - we only state without proof that $n$ has a primitive root if it is of the form $2, 4, p^k, \text{ or } 2p^k$ where $p$ is an odd prime and $k \geq 1$, and if an integer $n$ has a primitive root, then it has $\phi(\phi(n))$ of them. Additionally, the lowest power of a primitive root $a$ modulo $n$ that is equivalent to $1$ modulo $n$ is $\phi(n)$. An interested reader may find more on primitive roots and their theory in \citep[Appendix 2]{riesel}
 
-\subsection{Quadratic Residues}
+We conclude with a small lemma that will be useful to us.
+\begin{lemma}
+If $k$ is the least positive integer such that $a^k \equiv 1 \pmod n$, $a^j \equiv 1 \pmod n$, and $k < j$, then $k \mid j$.
+\end{lemma}
+\begin{proof}
+Let $k$ be the least power such that $a^k \equiv 1 \pmod n$. $j = k + m$, with $m \in \mathbb N$. if $k \nmid m$, then $m = qk+ r$, $ 0 < r < m$, and $j = (q+1)k + r$. However, $a^j = a^{(q+1)k}a^r \equiv a^r \equiv 1 \pmod n$ contradicts the minimality of $k$. Thus $k$ must divide $j$.
+\end{proof}
+
+\subsection*{Quadratic Residues}
 \newtheorem*{quadraticresiduedefinition}{Quadratic Residue}
 \begin{quadraticresiduedefinition}
 Let $a$ and $n$ be integers such that $(a,n) = 1$. If the congruence
@@ -90,10 +95,9 @@ Let $a$ and $n$ be integers such that $(a,n) = 1$. If the congruence
 has solutions $x$, then $a$ is a \textit{quadratic residue} of $n$. If there are no such solutions, then $a$ is a \textit{quadratic non-residue} modulo $n$.
 \end{quadraticresiduedefinition}
 
-\par It should be noted that the condition $(a,n) = 1$ allows us to consider only the so-called \textit{primitive} residue classes modulo $n$, or those classes that are relatively prime to $n$ when searching for quadratic residues. 
+\par It should be noted that the condition $(a,n) = 1$ does not prevent us from considering only the primitive residue classes modulo $n$ when searching for quadratic residues. 
 
 \par We now have a result related to quadratic residues.
- \newtheorem*{theorem}{Theorem}
  \begin{theorem}
  The product of two quadratic residues $a$ and $b$ modulo $n$ is always a quadratic residue of $n$, and the product of two quadratic non-residues $\alpha$ and $\beta$ modulo $n$ is always a quadratic non-residue.
  \end{theorem}
@@ -106,37 +110,49 @@ has solutions $x$, then $a$ is a \textit{quadratic residue} of $n$. If there are
   $\left( \frac{z}{x} \right)^2 \equiv \beta \pmod n$, which contradicts our assumption that $\beta$ is a non-quadratic residue.
  \end{proof}
  
- \par Note that we do not address the product of two non-residues - we will state without proof that for primes, the product of two non-residues is a residue, and that the issue is more complex for composite numbers. 
+ \par Note that we do not address the product of two non-residues - we will state without proof that for powers of an odd prime $p$ (including $p$ itself), $4$, or $2$ times a power of $p$, the product of two non-residues is a residue, and that the issue is more complex for other composite numbers. Thus we can treat the product of two non-residue primitive roots as a residue. A complete classification of the product of two non-residues is given in \citep[Appendix 3]{riesel}.
  
  
-\subsubsection{Legendre's Symbol, Euler's Criterion, and Jacobi's Symbol}
-We define Legendre's Symbol $\left( \frac{a}{p} \right)$ as a symbol given the value $1$ if $a$ is a quadratic residue of $p$ and the value $-1$ if $a$ is a quadratic non-residue of $p$, where $p$ is a prime.
+\subsubsection*{Legendre's Symbol, Euler's Criterion, and Jacobi's Symbol}
+We define Legendre's Symbol $\left( \dfrac{a}{p} \right)$ as a symbol given the value $1$ if $a$ is a quadratic residue of $p$ and the value $-1$ if $a$ is a quadratic non-residue of $p$, where $p$ is a prime.
 \par It is, of course, possible to compute Legendre's Symbol directly by trying every congruence class of $p$, but luckily there is a more elegant way, given by Euler:
 
 \newtheorem*{eulercriterion}{Euler's Criterion}
 \begin{eulercriterion}
 If $(a,p)  = 1$ and $p$ is an odd prime, then 
-	$$ \left( \frac{a}{p} \right)  \equiv a^{\frac{p-1}{2}} \pmod p$$
+	$$ \left( \dfrac{a}{p} \right)  \equiv a^{\nicefrac{p-1}{2}} \pmod p$$
 \end{eulercriterion}
 \begin{proof}
 The result can be broken into two results:
-	$$a^{\frac{p-1}{2}} \equiv 1 \pmod p \text{ if and only if } a \text{ is a quadratic residue of } p$$
+	$$a^{\nicefrac{p-1}{2}} \equiv 1 \pmod p \text{ if and only if } a \text{ is a quadratic residue of } p$$
 	$$\text{ and }$$
-	$$a^{\frac{p-1}{2}} \equiv -1 \pmod p \text{ if and only if } a \text{ is a quadratic non-residue of } p$$
+	$$a^{\nicefrac{p-1}{2}} \equiv -1 \pmod p \text{ if and only if } a \text{ is a quadratic non-residue of } p$$
 	
-\par We begin with the second of these. Let $a$ be a quadratic non-residue of a prime $p$, and $b$ be some natural number less than $p$. $bx \equiv a$ has a unique solution $x = b^{-1}$, because $(b,p) = 1$. However, $b \not \equiv b^{-1} \pmod p$, because otherwise $b^2 \equiv a \pmod p$ contradicts the assumption that $a$ is a quadratic non-residue. Thus all natural numbers less than $p$ can be paired into $\frac{p-1}{2}$ pairs $(m,n)$ such that $mn \equiv a \pmod p$. 
-\par Multiplying these pairs together, we have a product of  $\frac{p-1}{2}$ integers all equivalent to $a$ modulo $p$, which will be equivalent to $a^\frac{p-1}{2}$ modulo $p$ and  equal to $(p-1)!$. By Wilson's Theorem, we also have $(p-1)! \equiv -1 \pmod p$, and so when $a$ is a quadratic non-residue of $p$, $a^\frac{p-1}{2} \equiv -1 \pmod p$.
-\par Now let $a$ be such that $a^\frac{p-1}{2} \equiv -1 \pmod p$. By Wilson's Theorem, $a^\frac{p-1}{2} \equiv (p-1)! \pmod p$, and thus this implies that the product of all natural  numbers $b < p$ produce $\frac{p-1}{2}$ factors equivalent to $a$. If any $b$ exists such that $bx \equiv a \pmod p$ has its unique solution $x$ equivalent to $b$, then $b$ will not be able to form a product equivalent to $a$ when paired with any other factor of $(p-1)!$, which is a contradiction. Thus there is no $b$ such that $b^2 \equiv a \pmod p$, and $a$ is a quadratic non-residue.
-\par Now let $a$ be a quadratic residue of $p$. We can pick a natural number $b < p$ such that $b^2 \equiv a \pmod p$, and thus $ b^{p-1} \equiv a^\frac{p-1}{2} \pmod p$. By Fermat's Theorem, we have $ a^\frac{p-1}{2} \equiv 1 \pmod p$.
-\par Finally, we examine the case that  $a^\frac{p-1}{2} \equiv 1 \pmod p$ for some arbitrary $a$ relatively prime to $p$. Let $b$ be a primitive root modulo $p$ such that $a$ can be written as $b^j$ for some $j$. From this we have $b^{j \cdot \frac{p-1}{2}} \equiv 1 \pmod p$. Because the least power of $b$ that is equivalent to $1$ modulo $p$ is $p-1$, $p -1 \mid j \cdot \frac{p-1}{2}$. Thus $j$ must be even, and $\frac{j}{2}$ is an integer. Thus we have that $(b^{\frac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must be a quadratic residue.
+\par We begin with the second of these. Let $a$ be a quadratic non-residue of a prime $p$, and $b$ be some natural number less than $p$. $bx \equiv a$ has a unique solution $x = b^{-1}$, because $(b,p) = 1$. However, $b \not \equiv b^{-1} \pmod p$, because otherwise $b^2 \equiv a \pmod p$ contradicts the assumption that $a$ is a quadratic non-residue. Thus all natural numbers less than $p$ can be paired into $\nicefrac{p-1}{2}$ pairs $(m,n)$ such that $mn \equiv a \pmod p$. 
+\par Multiplying these pairs together, we have a product of  $\nicefrac{p-1}{2}$ integers all equivalent to $a$ modulo $p$, which will be equivalent to $a^{\nicefrac{p-1}{2}}$ modulo $p$ and  equal to $(p-1)!$. By Wilson's Theorem, we also have $(p-1)! \equiv -1 \pmod p$, and so when $a$ is a quadratic non-residue of $p$, $a^{\nicefrac{p-1}{2}} \equiv -1 \pmod p$.
+\par Now let $a$ be such that $a^{\nicefrac{p-1}{2}} \equiv -1 \pmod p$. By Wilson's Theorem, $a^{\nicefrac{p-1}{2}} \equiv (p-1)! \pmod p$, and thus this implies that the product of all natural  numbers $b < p$ produce $\nicefrac{p-1}{2}$ factors equivalent to $a$. If any $b$ exists such that $bx \equiv
+  a \pmod p$ has its unique solution $x$ equivalent to $b$, then $b$ will not be able to form a product equivalent to $a$ when paired with any other
+   factor of $(p-1)!$, which is a contradiction. Thus there is no $b$ such that $b^2 \equiv a \pmod p$, and $a$ is a quadratic non-residue.
+\par Now let $a$ be a quadratic residue of $p$. We can pick a natural number $b < p$ such that $b^2 \equiv a \pmod p$, and thus $ b^{p-1} \equiv
+ a^{\nicefrac{p-1}{2}} \pmod p$. By Fermat's Theorem, we have $ a^{\nicefrac{p-1}{2}} \equiv 1 \pmod p$.
+\par Finally, we examine the case that  $a^{\nicefrac{p-1}{2}} \equiv 1 \pmod p$ for some arbitrary $a$ relatively prime to $p$. Let $b$ be a primitive root
+ modulo $p$ such that $a$ can be written as $b^j$ for some $j$. From this we have $b^{j \cdot \nicefrac{p-1}{2}} \equiv 1 \pmod p$. Because the least power of $b$ that is equivalent to $1$ modulo $p$ is $p-1$, $p -1 \mid j \cdot \nicefrac{p-1}{2}$. Thus $j$ must be even, and $\nicefrac{j}{2}$ is an integer.
+Thus we have that $(b^{\nicefrac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must be a quadratic residue.
 	
 \end{proof}
 
-\par You may have noticed that the Legendre Symbol is only defined for a prime $p$. We define an analogue for composites, \textit{Jacobi's Symbol}, $\left( \frac{a}{n} \right)$, as $\prod_i \left( \frac{a}{p_i} \right) ^{\alpha_i}$ for $n$ an odd integer, $(a,n) = 1$, and $n = \prod_i p_i^{\alpha_i}$. 
 
-\par Recalling that we never addressed the case of the product of two quadratic non residues of a composite number, it makes intuitive sense that the Jacobi symbol occasionally incorrectly takes the value $1$ for a quadratic non-residue, given it is the product of two non-residues. However, it never incorrectly identifies a quadratic residue.  Thus it can be used to quickly determine that something is not a quadratic residue modulo $n$, but cannot prove something as a quadratic residue mod $n$.
 
-%\subsection{Modules}
+\par You may have noticed that the Legendre Symbol is only defined for a prime $p$. We define an analogue for composites, \textit{Jacobi's Symbol}, as
+ \[\left( \dfrac{a}{n} \right)  = \prod_i \left( \frac{a}{p_i} \right) ^{\alpha_i} \]
+  for $n$ an odd integer, $(a,n) = 1$, and $n = \prod p_i^{\alpha_i}$. 
+  
+\par From our earlier classification of the products of quadratic residues and quadratic non-residues, it can be concluded that if $n$ has a primitive root, then 
+\[ \left(\dfrac{a}{n} \right) \left( \dfrac{b}{n} \right) = \left(\dfrac{ab}{n} \right) \]
+
+\par Recalling that we never addressed the case of the product of two quadratic non residues of other composite numbers, it makes intuitive sense that the Jacobi symbol occasionally incorrectly takes the value $1$ for a quadratic non-residue, given it is the product of two non-residues. However, it never incorrectly identifies a quadratic residue.  Thus it can be used to quickly determine that something is not a quadratic residue modulo $n$, but cannot prove something as a quadratic residue mod $n$ alone.
+
+%\subsection*{Modules}
 
 %\begin{definition}
 %A set of numbers $M$ is called a module if for every $x$ and $y$ in $M$ $x+y$ and $x-y$ are also in $M$.
@@ -151,14 +167,6 @@ The result can be broken into two results:
 %Let $d$ be the smallest positive element of $M$. All multiples of $d$ must be in $M$ as well, because we can continually sum $d$ to %obtain positive multiples, and $-d$ to obtain negative multiples. Also, $d - d = 0 \in M$. Suppose that there is some integer $x$ in %$M$ that is not a multiple of $d$. Thus $ nd < x < (n+1)d$ for some $n \in \mathbb Z$. But then $x - nd \in M$ as well, and that %element is less than $d$, which condradicts the minimality of $d$. So there is no integer in $M$ that is not a multiple of the least %positive integer $d$.
 %\end{proof}
 
-\par It should be noted that the smallest module $M$ containing two integers $a$ and $b$ is the one generated by $d = (a,b)$. The proof is trivial.
-
-\subsection{A Few Small Results}
-\begin{theorem}
-If $k$ is the least positive integer such that $a^k \equiv 1 \pmod n$, $a^j \equiv 1 \pmod n$, and $k < j$, then $k \mid j$.
-\end{theorem}
-\begin{proof}
-Let $k$ be the least power such that $a^k \equiv 1 \pmod n$. $j = k + m$, with $m \in \mathbb N$. if $k \nmid m$, then $m = qk+ r$, $ 0 < r < m$, and $j = (q+1)k + r$. However, $a^j = a^{(q+1)k}a^r \equiv a^r \equiv 1 \pmod n$ contradicts the minimality of $k$. Thus $k$ must divide $j$.
-\end{proof}
+%\par It should be noted that the smallest module $M$ containing two integers $a$ and $b$ is the one generated by $d = (a,b)$. The proof is trivial.
 
 \end{document}
