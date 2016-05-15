@@ -1,9 +1,15 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alford et~al.(1994)Alford, Granville, and Pomerance]{carmichael}
+W.R. Alford, Andrew Granville, and Carl Pomerance.
+\newblock {T}here are infintely many {C}armichael numbers.
+\newblock \emph{Annals of Mathematics}, 140:\penalty0 703--722, 1994.
+\newblock URL \url{https://math.dartmouth.edu/~carlp/PDF/paper95.pdf}.
 
 \bibitem[Crandall and Pomerance(2005)]{crandall}
 Richard Crandall and Carl Pomerance.

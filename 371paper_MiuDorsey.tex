@@ -110,6 +110,16 @@ title =        {{A} {B}rief {H}istory of {F}actoring and {P}rimality {T}esting {
  url = 		 {http://www.jstor.org/stable/3219180}
 }
 
+@article{carmichael,
+author =       {W.R. Alford and Andrew Granville and Carl Pomerance},
+title =        {{T}here are infintely many {C}armichael numbers},
+ journal =      {Annals of Mathematics},
+ volume =       {140},
+ pages =        {703-722},
+ year =         {1994},
+ url = 		 {https://math.dartmouth.edu/~carlp/PDF/paper95.pdf}
+}
+
 }
 \end{filecontents}
 
@@ -365,7 +375,7 @@ Thus we have that $(b^{\nicefrac{j}{2}})^2 \equiv a \pmod p$, and thus $a$ must 
 \par It is a fair observation that this is not a test that can be applied to a single number, but rather construction of a set that will prove a number $n$ prime if $n$ is an element of the set, and composite if $n < N$ and $n$ is not in the set. This is not ideal, but combined with our method of trial division, and given that $76\%$ of odd integers have a prime factor less than $100$ \citep{riesel}, precompiling a list of primes up to a certain bound and performing trial divisions of only those prime numbers on a given $n$ can prove many numbers composite without having to resort to more rigorous compositeness or primality tests.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection* {Fermat's Theorem and Resulting Methods}
+\subsection* {Fermat's Theorem and Resulting Compositeness Tests}
 
 \par Among the many limitations of Eratosthenes' sieve is its lack of precision - it is impossible to simply prove a given number $n$ prime or composite, you must construct the entire set of primes up to $n$ in the worst case to say anything about $n$ at all. To remedy this problem, we move on to another elementary method that can test $n$ directly, a compositeness test based on a theorem of Fermat.
 
@@ -400,90 +410,94 @@ $$ a^{m-1} \equiv 1 \pmod m \text{ holds.}$$
 
  \par In general, a \textit{pseudoprime} is a composite number that behaves like a prime in the context of a compositeness test (we will see other pseudoprimes very soon.) Interestingly, if all Fermat pseudoprimes could be identified for a fixed base $a$, we could then use Fermat's Theorem with only base $a$ as a primality test. Unfortunately, this cannot be generally accomplished, but in computational applications this idea is exploited for fast primality testing of $n$ of a fixed length by classifying all Fermat pseudoprimes base $a$ up to some upper bound $N > n$, applying Fermat's test to $n$, and checking to see if it is among the pseudoprimes if it is not proven composite. This rather practical sidestep of the limitations of a compositeness test is extremely useful for comparatively small $n$.
  
- \par The existence of Fermat pseudoprimes prompts a question - can all Fermat pseudoprimes be proven composite eventually, given enough bases $a$ are tested? The answer, unfortunately, is no. There exist numbers that will be Fermat pseudoprimes base $a$ for all valid $a$, and these \textit{ Carmichael numbers} are explicitly defined as follows:
+ \par The existence of Fermat pseudoprimes prompts a question - can all Fermat pseudoprimes be proven composite eventually, given enough bases $a$ are tested? The answer, unfortunately, is no. There exist numbers that will be Fermat pseudoprimes base $a$ for all valid $a$, and these\textit{ Carmichael numbers} are explicitly defined as follows:
  
  \begin{definition}
   A composite number $n$ such that $a^{n -1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$ is called a \textit{Carmichael Number}.
  \end{definition}
  
- A Carmichael number, the smallest of which is $561$, will never be revealed as composite by a Fermat's Theorem test. The existence of Carmichael numbers are a serious hindrance of the Fermat's theorem method, although fortunately they can be characterized.
+ A Carmichael number, the smallest of which is $561$ \citep{riesel}, will never be revealed as composite by a Fermat's Theorem test. The existence of Carmichael numbers are a serious hindrance to the Fermat compositeness test, although we have some luck in they can be characterized further than their definition.
 
-\begin{theorem} $n$ is a Carmichael number if and only if $p-1$ divides $n-1$ for every prime factor of $n$, $n$ is composite, and $n$ is squarefree.
+\begin{theorem} A positive integer $n$ is a Carmichael number if and only if $p-1$ divides $n-1$ for every prime factor of $n$, $n$ is composite, and $n$ is squarefree.
 \end{theorem}
 
 \begin{proof}
-First, suppose that $n$ is a composite number that square free, and $p-1 \mid N-1$ for every prime factor $p$ of $n$, and that $a$ is an arbitrary integer such that $(a,n) = 1$.
-\par $n$ is square free, so $n = p_1 p_2 p_3 \ldots p_k$. Because $a$ is relatively prime to $n$, $a$ is also relatively prime to $p_i$ for all $i \in {1, \ldots, k}$. Thus, $a^{p-1} \equiv 1 \pmod{p_i}$ for all $i$ by Fermat's Theorem. However, because $p -1 \mid n -1$, $a^{n-1} = (a^{p-1})^t \equiv (1)^t = 1 \pmod{p_i}$ for some $t \in \mathbb Z$. Because $p_i \mid a^{n-1} - 1$ for all $i$, and all $p_i$ are distinct primes, $n = p_1p_2p_3 \ldots p_k \mid a^{n-1} - 1$. Thus $a^{n-1} \equiv 1 \pmod N$ for any arbitrary $a$ relatively prime to $n$, and $n$ is a Carmichael number.
+First, suppose that $n$ is a composite number that square free, and $p-1 \mid n-1$ for every prime factor $p$ of $n$, and that $a$ is an arbitrary integer relatively prime to $n$.
+\par By hypothesis, $n$ is square free, so $n = p_1 p_2 p_3 \ldots p_k$, with $p_i$ all distinct primes. Because $a$ is relatively prime to $n$, $a$ is also relatively prime to $p_i$ for all $i \in {1, \ldots, k}$. Thus, $a^{p-1} \equiv 1 \pmod{p_i}$ for all such $i$ by Fermat's Theorem.
+\par However, because $p -1 \mid n -1$, $a^{n-1} = (a^{p-1})^t \equiv (1)^t = 1 \pmod{p_i}$ for some $t \in \mathbb Z$. Because $p_i \mid a^{n-1} - 1$ for all $i$, and all $p_i$ are distinct primes, $n = p_1p_2p_3 \ldots p_k \mid a^{n-1} - 1$. Thus $a^{n-1} \equiv 1 \pmod n$ for any arbitrary $a$ relatively prime to $n$, and $n$ is a Carmichael number.
 \par
-We now suppose that a composite $n$ is a Carmichael number, so $a^{n-1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$. $n = p_1^{\alpha_1}\cdot \ldots p_k^{\alpha_k}$, and so $p_i^{\alpha_i} \mid a^{n-1} - 1 $ and $(a,p_i) = 1$ for all $i \in \{1, \ldots, k\}$. Let $r$ be an integer such that $N = p_i^{\alpha_i} r$. Obviously, $p_i^{\alpha_i}$ and $r$ are relatively prime, so by the chinese remainder theorem we have a unique solution of the system
+We now suppose that a composite $n$ is a Carmichael number, so $a^{n-1} \equiv 1 \pmod n$ for all $a$ relatively prime to $n$. $n = p_1^{\alpha_1}\cdot \ldots p_k^{\alpha_k}$, and so $p_i^{\alpha_i} \mid a^{n-1} - 1 $ and $(a,p_i) = 1$ for all $i \in \{1, \ldots, k\}$. Let $r$ be an integer such that $n = p_i^{\alpha_i} r$. Obviously, $p_i^{\alpha_i}$ and $r$ are relatively prime, so by the Chinese Remainder Theorem we have a unique solution of the system
 	$$x \equiv a_1 \pmod{p_i^{\alpha_i}}$$
 	$$x \equiv 1 \pmod{r}$$
-where $a_1$ is a primitive root of $p_i^{\alpha_i}$. 
-\par Suppose that $\alpha_i = 1$. $x$ is coprime to both $p_i$ and $r$, so we have $x \equiv a \pmod{p_i \cdot r = n}$, and so $x^{n-1} \equiv 1 \pmod n$, and so $x^{n-1} \equiv 1 \pmod p_i$ as well. However, $x^{p_i - 1} \equiv 1 \pmod{p_i}$, and $p_i - 1$ is the least power of $x$ such that $x$ is equivalent to $1$ modulo $p_i$, and so we have $p_i -1 \mid N - 1$ for all $i$. 
-\par Now suppose that $\alpha_i >1$ for some $i$, or that $n$ is not squarefree. $x^{n-1} \equiv 1 \pmod{p_i^{\alpha_i}}$, and by Euler's theorem, $x^{\phi(p_i^{\alpha_i})} = x^{p_i^{\alpha_i - 1}(p_i - 1))}  \equiv 1 \pmod{p_i^{\alpha_i}}$. Thus because $p_i^{\alpha_i -1}(p_i - 1)$ is the least power of $a_1$ equivalent to $1$ modulo $pi^{\alpha_i}$, $p_i^{\alpha_i -1}(p_i - 1) \mid n - 1$. However, $p_i^{\alpha_i - 1} \mid n - 1$ is a contradiction, because $(n, n-1) = 1$ and $p_i^{\alpha_i - 1} \mid n$. Thus $n$ must also be squarefree, and we are done. 
+where $a_1$ is a primitive root of $p_i^{\alpha_i}$ (Recall from our brief introduction of primitive roots that $p_i^{\alpha_i}$ is guaranteed $\phi(\phi(p_i^{\alpha_i}))$ of these).
+\par Suppose that $\alpha_i = 1$. $x$ is relatively prime to both $p_i$ and $r$, so we have $x \equiv a \pmod{p_i \cdot r = n}$, which gives us $x^{n-1} \equiv 1 \pmod n$ and $x^{n-1} \equiv 1 \pmod {p_i}$ as well. However, $x^{p_i - 1} \equiv 1 \pmod{p_i}$, and $p_i - 1$ is the least power of $x$ such that $x$ is equivalent to $1$ modulo $p_i$, and have $p_i -1 \mid n - 1$ for all $i$. 
+\par Now suppose that $\alpha_i >1$ for some $i$, so that $n$ is not squarefree. $x^{n-1} \equiv 1 \pmod{p_i^{\alpha_i}}$, and by Euler's theorem, $x^{\phi(p_i^{\alpha_i})} = x^{p_i^{\alpha_i - 1}(p_i - 1))}  \equiv 1 \pmod{p_i^{\alpha_i}}$. Thus because $p_i^{\alpha_i -1}(p_i - 1)$ is the least power of $a_1$ equivalent to $1$ modulo $pi^{\alpha_i}$, $p_i^{\alpha_i -1}(p_i - 1) \mid n - 1$. However, $p_i^{\alpha_i - 1} \mid n - 1$ is a contradiction, because $(n, n-1) = 1$ and $p_i^{\alpha_i - 1} \mid n$. Thus $n$ must also be squarefree, and we are done. 
 \end{proof}
 
+\par Despite this nice result, it is very troubling to have composite numbers that we could not identify even with infinite computational time, and because there are infinitely many Carmichael numbers, they cannot even be completely identified and compensated for. (A rather formidable  proof of the infinitude of Carmichael  numbers can be found in \citep{carmichael}).
 
-\subsubsection*{Improvements due to Eulers Criterion}
 
-There is clear motivation to improve our method, if possible, to avoid the problems presented by Carmichael numbers. One tool that we have at our disposal is the \textit{Euler Criterion for Quadratic Residues}, which is is stated below and proven in the Background %%ref 
-section.
+\subsubsection*{Improving the Fermat test with Euler's Criterion}
+
+There is clear motivation to improve our method, if possible, to avoid the significant problem presented by the existence of Carmichael numbers. One tool that we have at our disposal is the \textit{Euler Criterion for Quadratic Residues}, which is is stated below and proven in the Background section on quadratic residues.
 
 \newtheorem*{eulerconverse}{Euler's Criterion as a Compositeness Test}
 
 \begin{eulercriterion}
 If $p$ is an odd prime and $(a,p) = 1$, 
-$$a^{\frac{n-1}{2}} \equiv \pm 1 \pmod p$$
+$$a^{\nicefrac{n-1}{2}} \equiv \pm 1 \pmod p$$
+where the sign of $1$ is chosen to match the value of Legendre's symbol $\left(\dfrac{a}{p} \right)$.
 \end{eulercriterion}
 
 
 This criterion's logical converse, much like Fermat's theorem, gives us a test for compositeness.
 \begin{eulerconverse}
 If $n$ is odd, $(a,n) = 1$, and
-	$$a^{\frac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
+	$$a^{\nicefrac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
 	then $n$ is a composite number.
 \end{eulerconverse}
 
-To strengthen this compositeness test, we use \textit{Jacobi's symbol}, $( \frac{a}{n})$, over Legendre's symbol.
+To strengthen this compositeness test, we use Jacobi's symbol over Legendre's symbol, remembering that Jacobi's symbol sometimes misidentifies quadratic non-residues as residues when $n$ is composite.
 
 \begin{eulerconverse}
 If $n$ is odd, $(a,n) = 1$, and
-	$$a^{\frac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
+	$$a^{\nicefrac{n-1}{2}} \not\equiv \pm 1 \pmod n$$
 	then $n$ is a composite number.
 	
-\par If $a^{\frac{n-1}{2}} \equiv \pm 1 \pmod n$ and
-	$$a^{\frac{n-1}{2}} \not\equiv (\frac{a}{n}) \pmod n$$
-	then $n$ is composite.
-	
-\par However, if $a^{\frac{n-1}{2}} \equiv (\frac{a}{n}) \pmod n$ holds, the test is inconclusive.
+\par If $a^{\nicefrac{n-1}{2}} \equiv \pm 1 \pmod n$ and
+	$$a^{\nicefrac{n-1}{2}} \not\equiv \left(\dfrac{a}{n}\right) \pmod n$$
+	then $n$ is composite. \\
+\par
+ If $a^{\nicefrac{n-1}{2}} \equiv \left(\dfrac{a}{n}\right) \pmod n$ holds, the test is inconclusive.
 \end{eulerconverse}
 
-As the last line of our definition implies, this test also has pseudoprimes associated with it. We will call these \textit{Euler pseudoprimes}.
+As the last line of our definition and our knowledge of Jacobi's symbol might suggest, this compositness test also has pseudoprimes. We will call these \textit{Euler pseudoprimes}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Euler Pseudoprimes and Strong Pseudoprimes}
 We define an Euler pseudoprime in an analogous way to our definition of a Fermat pseudoprime.
 \begin{definition}
 Let $n$ be an odd composite number such that
-	 $$a^{\frac{n-1}{2}} \not\equiv (\frac{a}{n}) \pmod n$$ 
+	 $$a^{\nicefrac{n-1}{2}} \not\equiv \left(\dfrac{a}{n}\right) \pmod n$$ 
 for some $a$ relatively prime to $n$.  Then $n$ is an \textit{Euler pseudoprime} base $a$.
 \end{definition}
 
-Unfortunately, there are some numbers that are both Carmichael numbers and Euler pseudoprimes. An example of one such number is $1729$ - %% flesh out this example later
-\par Despite this disappointing fact,  many Carmichael numbers are revealed as composite by Euler's criterion, and additionally, there is no analogue for Carmichael numbers in Euler pseudoprimes. If enough bases are tested, we will eventually prove an Euler pseudoprime composite.
+\par Unfortunately, there are some numbers that are both Carmichael numbers and Euler pseudoprimes. An example of one such number is $1729$.
+\par Despite this disappointing fact,  many Carmichael numbers are revealed as composite by Euler's Criterion, and additionally, there is no analogue for Carmichael numbers in Euler pseudoprimes. If enough bases $a$ are tested, we will eventually prove the compositeness of any composite number.
 
-\par To close this section, we present a final type of pseudoprime.
+\par To close this section, we present a final type of pseudoprime, which, like Euler pseudoprimes, can always be eventually proven composite by some base $a$.
 \begin{definition}
 An odd composite number $n$ with $n-1 = d\cdot2^s$, $d$ odd, is called a \textit{strong pseudoprime} for base $a$ if either
 $a^d \equiv 1 \pmod n$ or $a^{d \cdot 2r} \equiv -1 \pmod n$, for some $r \in \{0, 1, \ldots, s-1\}$. 
 \end{definition}
 
-\par This test for pseudoprimes is intended, much like Euler pseudoprimes, to eliminate the problem of Carmichael numbers in the Fermat
-Compositeness test. Indeed, any Fermat pseudoprime will be eventually proven composite by the strong pseudoprime test if enough 
-bases $a$ are tested.
+\par This test for pseudoprimes is intended, much like Euler pseudoprimes, to eliminate the problem of Carmichael numbers in the Fermat Compositeness test. Indeed, any Fermat pseudoprime will be eventually proven composite by the strong pseudoprime test if enough bases $a$ are tested.
 
-\par The motivation for the definition is as follows - Any Fermat pseudoprime $n$ to base $a$ will satisfy the equivalence
+\par The motivation (which is not a proof) for the test is as follows:
+\\Any Fermat pseudoprime $n$ to base $a$ will satisfy the equivalence
 	$$a^{n-1} - 1 \equiv 0 \pmod n$$
 Because we assume that $n$ is odd if it is being tested for primality, $n = 2m+1$ for some integer $m$ and we have
-	$$a^{2m} - 1 = (a^m - 1)(a^m+1) \equiv 0 \pmod(n)$$
+	$$a^{2m} - 1 = (a^m - 1)(a^m+1) \equiv 0 \pmod{n}$$
 If $n$ is a prime, it must divide one of these factors, but it cannot divide both because then it would need to divide all linear
 combinations of them, including $(a^m - 1) - (a^m + 1) = -2$. Therefore we have 
 	$$a^m \equiv \pm 1 \pmod n$$
@@ -491,7 +505,7 @@ We can write $n$ as $2^\alpha k + 1$, where $k$ is odd, and have
 	$$a^{n-1} - 1 = (a^k - 1)(a^k + 1)(a^{2k} + 1) \ldots (a^{2^{\alpha - 1} k} +1)$$
 	
 \par If $n$ divides exactly one of these factors but is composite, then it is a strong pseudoprime. Interestingly, if a number is
-a strong pseudoprime to the base $a$, it will also be a Euler pseudoprime to $A$.
+a strong pseudoprime to the base $a$, it will also be a Euler pseudoprime to $a$.
 
 
 
@@ -504,13 +518,10 @@ a strong pseudoprime to the base $a$, it will also be a Euler pseudoprime to $A$
 
 
 
-\subsection*{Proving Primality}
+\subsection*{Elementary Primality Tests}
 
-\par In the previous section, all the methods we examined could only possibly prove compositeness - because we are unable to test
-infinitely many bases in an Euler or Strong Pseudoprime test, there is no way for us to computationally prove that a number is prime using
-these methods, only to say that it is very likely to be prime, or prove that it is composite. 
-\par In this section, we examine some methods of proving primality. These primality tests are much more complicated computationally and theoretically than compositeness tests, and unfortunately usually depend on factorization of a number, which is a slow and laborious 
-process. However, they are theoretically motivating, despite not being as generally popular as more modern primality tests.
+\par In the previous section, all the tests we examined could only possibly prove compositeness - because we are unable to test infinitely many bases in an Euler or Strong Pseudoprime test, there is no way for us to computationally prove that a number is prime using these methods, only to say that it is somewhat likely to be prime, or say with certainty that it is composite. 
+\par In this section, we examine some methods of proving primality. These primality tests are much more complicated computationally and theoretically than compositeness tests, and unfortunately usually depend on factorization of a number, which is a slow and laborious process when performed, and very limiting to the form of $n$ when avoided. However, they are theoretically motivating, despite not being as practically useful as more modern primality tests.
 
 \subsubsection*{Lehmer's Theorem}
 
@@ -519,7 +530,7 @@ process. However, they are theoretically motivating, despite not being as genera
 \newtheorem*{lehmer}{Lehmer's Theorem}
 \begin{lehmer}
 Suppose $n-1 = \prod^n_{j=1} q_j^{\beta_j}$, with all $q_j$ distinct primes. If an integer $a$ exists such that 
-	$$a^\frac{n-1}{q_j} \neq 1 \pmod n \text{ for all } j = 1, \ldots, n$$
+	$$a^{\nicefrac{n-1}{q_j}} \neq 1 \pmod n \text{ for all } j = 1, \ldots, n$$
 	$$\text { and such that }$$
 	$$a^{n-1} \equiv 1\pmod n \text{, }$$
 then $n$ is a prime number.
