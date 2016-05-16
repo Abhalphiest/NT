@@ -668,23 +668,27 @@ Elliptic curve primality testing is based on the use of the properties of the gr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 
 \section{Factorization}\label{Factorization}
 
 % Introduction to the subject
-\par Prime factorization is the method by which we factor an integer into its canonical prime factorization.
-For relatively small integers, this is trivial to do by hand. As these integers scale, however, this task
-becomes prohibitively expensive to compute by our modern day algorithms. In fact, the security of the RSA
-cryptographic algorithm relies on the difficulty of factoring large algorithms.
+\par Prime factorization is the process of decomposing an integer into distinct prime powers.
+For relatively small integers, this is trivial to straightforwardly. As these integers scale, however, this task
+becomes prohibitively expensive to compute by even modern day algorithms. In fact, the security of the RSA
+cryptographic algorithm relies heavily on the relative computational difficulty of factoring large composite numbers.
+Before we examine some of the elementary methods of factorization, there are a few notes to be made on factorization
+in general.
 
-\par Because factoring large integers is so computationally expensive, it is better to first determine that
-the number we want to factor is, indeed, a composite. To do this, we can use the variety of primality tests
-to ensure that our number is factorable before we start down this path.
+\par In the previous section, we discovered that there are many ways to prove compositeness without 
+too much computational expense. Because factoring large integers is so comparatively difficult, it is recommended
+to first confirm that the number we want to factor is indeed composite using the results of the previous section before
+even attempting factorization.
 
-\par Choosing the correct factorization method for our number is also another way to lessen the cost of
-factoring. If $N$ can be identified to have some special mathematical form that lends itself to a specialized
-factorization method, then it is best to use that.
+\par Another important consideration before attempting factorization is the form of the composite $N$. 
+$N$ of certain forms may lend themselves to certain specialized factorization methods that allow us to neatly avoid
+some of the difficulty of factorization, and identification of these $N$ before trying more expensive algorithms can
+help us to alleviate the computational workload involved.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -743,10 +747,10 @@ is found, we can find our $a,b$ by substituting our known $x$ and $y$ in.
 
 \par For example, take the number $1625$. If we wanted to write it as a difference between two nonconsecutive squares,
 we can start by confirming that $1625$ is not a square. $\sqrt{N}$ is not an integer, so we can proceed:
-\begin{align*}
-    m &= \lfloor \sqrt{N} \rfloor+1 &= 41 \\
-    x &= m^2-N &= 41^2 - 1625 &= 56
-\end{align*}
+
+    \[m = \lfloor \sqrt{N} \rfloor+1 = 41 \]
+    \[x = m^2-N = 41^2 - 1625 = 56 \]
+
 $56$ is not a square, and so we repeat the process until we arrive at $x = 45, y = 20$. Notice that our $x,y$ are
 not primes. To find the prime factorization, we then apply Fermat's on $x,y$.
 
@@ -761,7 +765,7 @@ possible square ending.
 \par Another one of the shortcuts that has been developed is to use a multiplier. The idea behind this is that
 we can find a factorization for a number whose prime factors are relatively close quickly. Although the number $N$ we
 are trying to factor may not be a product of two nearby integers, the number $n$ multiplied by some other integer $k$
-may be. In that case, we could take the $\gcd$ of $n$ and $kN$ to obtain the prime factorization. To find a multiplier
+may be. In that case, we could compute the greatest common denominator of $n$ and $kN$ to obtain the prime factorization. To find a multiplier
 $k$, we could use the Lehman method, which is a formalization of the discovery of these multipliers $k$ given $N$.
 
 
@@ -778,7 +782,7 @@ and also has two different representations in that form. Note that $D$ has to re
 Because this method relies on this identity, this method is only applicable to integers that are of this form.
 
 \par We can use the converse of this identity to find how to write $N$ as a product of two numbers of the form. The converse
-states that if we can find two different representations of the form $a^2+Db^2$, with the $\gcd$ of the product of the $b$
+states that if we can find two different representations of the form $a^2+Db^2$, with the greatest common denominator of the product of the $b$
 values of each representation and $N$ being $1$, then $N$ can be written as a product of two integers of that same form.
 
 \begin{proof}
@@ -793,6 +797,11 @@ be found, we can stop here and use another method to factorize $N$, for Euler's 
 
 
 \section{Conclusion}\label{Conclusion}
+
+\par As the world becomes more and more technologically dependent, the field of cryptography will no doubt generate even more advanced
+methods than those we have today. However, as we have seen, the nature of the theory behind both primality testing and prime factorization
+is deeply iterative and interleaved - without the early results of the pre-computing age, we would not have our modern methods, and it is profoundly likely that the work of today and tomorrow will be the foundations for future results. It is the hope of the authors that through the elementary methods described in this paper, the fundamental theory of the treatment of primes and prime factorizations has been revealed, at least partially, and a foundation of understanding has been formed that makes the general logic and application of even more theoretically 
+complex algorithms more accessible.
 
 \newpage
 
@@ -815,7 +824,7 @@ be found, we can stop here and use another method to factorize $N$, for Euler's 
 \par This paper was written to fulfill the requirements of Math 371, Number Theory, offered by Dr. Anurag Agarwal
 in the Spring 2016 semester at Rochester Institute of Technology.
 \subsection*{Margaret Dorsey}
-   Computational Mathematics
+   \noindent Computational Mathematics
    \\Game Design and Development
    \\Computer Science
    \\
@@ -826,11 +835,11 @@ in the Spring 2016 semester at Rochester Institute of Technology.
   \\ Author of the Introduction, Background, Primality, and History sections.
 
 \subsection*{Jodie Miu}
-   Computer Science
+   \noindent Computer Science
    \\
    \\ jm7481@rit.edu 
    \\
-   \\ Author of the Factorization section.
+   \\ Author of the Factorization section. Responsible for the proof provided within that section.
    
    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
