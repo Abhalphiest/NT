@@ -95,4 +95,29 @@ LaTeX Font Info:    ... okay on input line 40.
 \everyMPtoPDFconversion=\toks16
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)       
+(Font)              <7> on input line 77.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 77.
+ [1
+
+{C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+! Undefined control sequence.
+l.125 ... observation, we can start with $m=\floor
+                                                  {\sqrt{N}}+1$, which is th...
+
+? 
+! Emergency stop.
+l.125 ... observation, we can start with $m=\floor
+                                                  {\sqrt{N}}+1$, which is th...
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 1106 strings out of 493921
+ 14706 string characters out of 3148878
+ 66992 words of memory out of 3000000
+ 4453 multiletter control sequences out of 15000+200000
+ 4850 words of font info for 18 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,4n,19p,336b,107s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
