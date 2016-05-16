@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  13 MAY 2016 23:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  16 MAY 2016 06:12
 entering extended mode
 **C:/Users/Margaret/Google*Drive/Spring2016/MATH371/Project/Workspace/Primality
 Testing/PrimalityOutline.tex
@@ -175,45 +175,34 @@ LaTeX Font Info:    ... okay on input line 44.
 \makeMPintoPDFobject=\count105
 \everyMPtoPDFconversion=\toks28
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 78.
+LaTeX Font Info:    Try loading font information for U+msa on input line 76.
  ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 78.
+LaTeX Font Info:    Try loading font information for U+msb on input line 76.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] 
-[4] [5] [6] [7]
-[8] [9] [10]
-("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\Workspace\Primality
-Testing\PrimalityOutline.aux") ) 
-Here is how much of TeX's memory you used:
- 2087 strings out of 493921
- 25719 string characters out of 3148878
- 82032 words of memory out of 3000000
- 5389 multiletter control sequences out of 15000+200000
- 7901 words of font info for 30 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 27i,5n,24p,1156b,187s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmb
-x12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb>
-Output written on PrimalityOutline.pdf (10 pages, 192637 bytes).
-PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+{C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+! Undefined control sequence.
+l.93 ...have a prime factor less than $100$ \citep
+                                                  {riesel}, precompiling a l...
 
+? 
+! Emergency stop.
+l.93 ...have a prime factor less than $100$ \citep
+                                                  {riesel}, precompiling a l...
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 2064 strings out of 493921
+ 25280 string characters out of 3148878
+ 80032 words of memory out of 3000000
+ 5370 multiletter control sequences out of 15000+200000
+ 6895 words of font info for 27 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,4n,24p,1007b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

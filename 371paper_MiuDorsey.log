@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  15 MAY 2016 15:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.7)  16 MAY 2016 06:26
 entering extended mode
 **C:/Users/Margaret/Google*Drive/Spring2016/MATH371/Project/371paper_MiuDorsey.
 tex
@@ -146,11 +146,6 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyphenat\hyphenat.sty"
-Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
-\langwohyphens=\language69
-LaTeX Info: Redefining \_ on input line 43.
-)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\comment\comment.sty"
 \CommentStream=\write3
 
@@ -234,43 +229,19 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 187.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (2.25986pt too wide) in paragraph at lines 200--201
-\OT1/cmr/m/n/9 math-e-mat-i-cal back-ground may un-der-stand each method as it 
-is in-tro-duced,
- []
+) [1
 
-[1
-
-{C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (3.70895pt too wide) in paragraph at lines 243--244
-[]\OT1/cmr/m/n/10 Gauss, who had a deep in-ter-est in pri-mal-ity test-ing and 
-fac-tor-iza-tion meth-ods,
- []
-
-[2]
+{C:/Users/Margaret/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
 Overfull \hbox (0.65778pt too wide) in paragraph at lines 291--294
 []\OT1/cmr/m/n/10 Suppose that two in-te-gers $\OML/cmm/m/it/10 a$ \OT1/cmr/m/n
 /10 and $\OML/cmm/m/it/10 a$ \OT1/cmr/m/n/10 both rel-a-tively prime to $\OML/c
 mm/m/it/10 n$ \OT1/cmr/m/n/10 are quadratic
  []
 
-[3] [4] [5]
-Overfull \hbox (5.25056pt too wide) in paragraph at lines 390--391
-[]\OT1/cmr/m/n/10 The Sieve of Er-atos-thenes is con-sid-ered the first al-go-r
-ith-mic method de-vel-oped
- []
-
-[6] [7]
-Overfull \hbox (5.80606pt too wide) in paragraph at lines 421--423
-[]\OT1/cmr/m/n/10 This sim-ple com-pos-ite-ness test will prove very use-ful to
- us, given its the-o-ret-i-cal
- []
-
-[8] [9]
-Overfull \hbox (1.97269pt too wide) in paragraph at lines 481--482
-[]\OT1/cmr/m/n/10 To strengthen this com-pos-ite-ness test, we use Ja-cobi's sy
-m-bol over Leg-en-dre's
+[3] [4] [5] [6] [7] [8] [9]
+Overfull \hbox (8.13956pt too wide) in paragraph at lines 481--482
+\OT1/cmr/m/n/10 dre's sym-bol, re-mem-ber-ing that Ja-cobi's sym-bol some-times
+ misiden-ti-fies quadratic
  []
 
 
@@ -278,47 +249,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 489--491
 
  []
 
-[10] [11] [12]
-Overfull \hbox (1.77841pt too wide) in paragraph at lines 587--588
-\OT1/cmr/m/n/10 The-o-rem, de-vel-oped from this the-o-rem and a re-sult called
- Pock-ling-ton's the-o-rem. 
- []
-
-[13]
+[10] [11] [12] [13]
 Underfull \hbox (badness 10000) in paragraph at lines 631--632
 
  []
 
-[14]
-Overfull \hbox (7.11172pt too wide) in paragraph at lines 644--645
-[]\OT1/cmr/m/n/10 These tests are, in gen-eral, quite the-o-ret-i-cally and al-
-go-rith-mi-cally com-pli-cated,
- []
-
-[15]
-Overfull \hbox (7.1672pt too wide) in paragraph at lines 656--657
-[]\OT1/cmr/m/n/10 The rest of the test de-pends on the fact that the only non-i
-nvertible equiv-a-lence
- []
-
-[16]
+[14] [15] [16] [17] [18] [19]
 ("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\371paper_MiuDorsey.
 bbl"
 Underfull \hbox (badness 10000) in paragraph at lines 15--21
-[]\OT1/cmr/m/n/10 John Brill-hart, D.H. Lehmer, and J.L. Sel-f-ridge.  Pri-mal-
-ity
+[]\OT1/cmr/m/n/10 John Brill-hart, D.H. Lehmer, and J.L. Sel-f-ridge.  Pri-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 15--21
-\OT1/cmr/m/n/10 Cri-te-ria and Fac-tor-iza-tions of $2[] \OMS/cmsy/m/n/10  \OT
-1/cmr/m/n/10 1$.  \OT1/cmr/m/it/10 Math-e-mat-ics
+\OT1/cmr/m/n/10 mal-ity Cri-te-ria and Fac-tor-iza-tions of $2[] \OMS/cmsy/m/n/
+10  \OT1/cmr/m/n/10 1$.  \OT1/cmr/m/it/10 Math-e-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 15--21
-\OT1/cmr/m/it/10 of Com-pu-ta-tion\OT1/cmr/m/n/10 , 29(130):620 -- 647, 1975.  
-URL
+\OT1/cmr/m/it/10 mat-ics of Com-pu-ta-tion\OT1/cmr/m/n/10 , 29(130):620 -- 647,
+ 1975.  URL
  []
 
 
@@ -328,41 +280,41 @@ Overfull \hbox (46.08012pt too wide) in paragraph at lines 15--21
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 698--707
+Underfull \hbox (badness 10000) in paragraph at lines 818--827
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 698--707
+Underfull \hbox (badness 10000) in paragraph at lines 818--827
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 698--707
+Underfull \hbox (badness 10000) in paragraph at lines 818--827
 
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 709--714
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 829--834
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--714
+Underfull \hbox (badness 10000) in paragraph at lines 829--834
 
  []
 
-[18]
+[21]
 ("C:\Users\Margaret\Google Drive\Spring2016\MATH371\Project\371paper_MiuDorsey.
 aux") ) 
 Here is how much of TeX's memory you used:
- 2928 strings out of 493921
- 36568 string characters out of 3148878
- 97225 words of memory out of 3000000
- 6180 multiletter control sequences out of 15000+200000
+ 2894 strings out of 493921
+ 36080 string characters out of 3148878
+ 96482 words of memory out of 3000000
+ 6150 multiletter control sequences out of 15000+200000
  14875 words of font info for 57 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,28p,982b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,28p,982b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX/fonts
@@ -380,9 +332,9 @@ ts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 ><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 371paper_MiuDorsey.pdf (18 pages, 295217 bytes).
+Output written on 371paper_MiuDorsey.pdf (21 pages, 306643 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
+ 150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

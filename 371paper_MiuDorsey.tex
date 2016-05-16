@@ -40,7 +40,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage[none]{hyphenat} 
+%%\usepackage[none]{hyphenat} 
 \usepackage{comment}
 \usepackage[numbers]{natbib}
 \usepackage{titlesec}
@@ -671,6 +671,126 @@ Elliptic curve primality testing is based on the use of the properties of the gr
 
 
 \section{Factorization}\label{Factorization}
+
+% Introduction to the subject
+\par Prime factorization is the method by which we factor an integer into its canonical prime factorization.
+For relatively small integers, this is trivial to do by hand. As these integers scale, however, this task
+becomes prohibitively expensive to compute by our modern day algorithms. In fact, the security of the RSA
+cryptographic algorithm relies on the difficulty of factoring large algorithms.
+
+\par Because factoring large integers is so computationally expensive, it is better to first determine that
+the number we want to factor is, indeed, a composite. To do this, we can use the variety of primality tests
+to ensure that our number is factorable before we start down this path.
+
+\par Choosing the correct factorization method for our number is also another way to lessen the cost of
+factoring. If $N$ can be identified to have some special mathematical form that lends itself to a specialized
+factorization method, then it is best to use that.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Classical Factorization Methods}
+
+\subsubsection*{ Trial Division }
+\par As a factorization method, trial division is repeated division of our number $N$ by
+small primes. We store the pre-computed primes and their number in some table. This would be very
+speedy, albeit at the cost of the storage. Alternatively, we could save space by generating our
+primes along the way, using the form $6k \pm 1$ (including $2$ and $3$).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{ Euclid's Algorithm }
+\par Interestingly enough, we can also use Euclid's algorithm to search for the factors of a
+number. Euclid's algorithm will give us the prime factors of our number $N$ between $g$ and $G$, where
+$g$ is our lower search limit and $G$ is our upper search limit.
+
+\par To use Euclid's algorithm to factor a number, start by multiplying together all primes between
+the two limits. In fact, there even exists precomputed products for primes within certain ranges, to
+use here should we want to. Next, we apply Euclid's algorithm on the product of the primes and our number
+$N$. Prime factors of $N$ within the search limits $g$ and $G$ will be found.
+
+\par Application of Euclid's is fast because it simply is repeated division, multiplication, and
+subtraction. The only possible tricky thing here is the initial division of the (potentially) large product
+of primes by $N$. Aside from that, it is not too difficult to perform in step-wise fashion.
+
+\par Although one may assume Euclid's is no longer used, it is not obsolete. In fact, it is used when $N$ is
+too large to be easily divided by a small prime with the arithmetic computers provide. In that case, it
+is faster to divide the huge product of primes by $N$ than to divide $N$ over and over by small primes.
+It is also used when only small divisors are sought, like in the continued fraction method. To use this method
+to obtain small divisors, we can store products of small primes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{ Fermat }
+\par Fermat's uses Legendre's congruence, which states that every number has the solutions
+$x \equiv \pm y \pmod{M}$ to $x^2 \equiv y^2 \pmod{M}$.  These are the trivial solutions. If $M$ is composite,
+however, then other solutions exist that can be used to factor $M$. Many other classical factorization methods
+also use Legendre's congruence to find the factorization of a composite number, but the way in which they differ
+is in how solutions to the congruence are discovered.
+
+\par Here, the idea is that we can write an odd composite number as a difference between two nonconsecutive
+squares. Once we have that, it naturally gives us a factorization, in that: $N = ab = x^2 - y^2 = (x-y)(x+y)$.
+To find the two square numbers, we start by making the observation that any $x$ that satisfies $N=x^2-y^2$
+must be $> \sqrt{N}$.
+
+\par With that observation, we can start with $m=\lfloor \sqrt{N} \rfloor+1$, which is the smallest $x$ possible (aside
+from the case where $N$ is $x^2$). Being a relatively simple factorization, we do not need to consider the case
+where $N$ is $x^2$. We also want to discard trivial factorizations, like $N = ab = x^2 - 1^2$. To that end, we
+can set the restriction that the difference of our $x,y$ must be greater than $1$.
+
+\par We consider $x=m^2-N$, checking to see if it is a square. If it is, then we have found our $x$ and $y$, $y$
+being $m$. If $x$ is not a square, then we try the next possible $x$ by incrementing our $m$ by $1$, and testing to see
+if that is a square. Repeat the process until our difference of squares is found. After the difference of squares
+is found, we can find our $a,b$ by substituting our known $x$ and $y$ in.
+
+\par For example, take the number $1625$. If we wanted to write it as a difference between two nonconsecutive squares,
+we can start by confirming that $1625$ is not a square. $\sqrt{N}$ is not an integer, so we can proceed:
+\begin{align*}
+    m &= \lfloor \sqrt{N} \rfloor+1 &= 41 \\
+    x &= m^2-N &= 41^2 - 1625 &= 56
+\end{align*}
+$56$ is not a square, and so we repeat the process until we arrive at $x = 45, y = 20$. Notice that our $x,y$ are
+not primes. To find the prime factorization, we then apply Fermat's on $x,y$.
+
+\par Note that the method is not very efficient. Fermat's method performs best in cases where $N$ is a product of
+two nearby integers, because the factorization can then be found in a relatively small number of rounds of the
+process described above.
+
+\par However, we can consider the shortcuts that have been developed since. One of them uses the observation that
+the last two digits of squares cannot be just any number. To use this fact, we can test only the numbers that have a
+possible square ending.
+
+\par Another one of the shortcuts that has been developed is to use a multiplier. The idea behind this is that
+we can find a factorization for a number whose prime factors are relatively close quickly. Although the number $N$ we
+are trying to factor may not be a product of two nearby integers, the number $n$ multiplied by some other integer $k$
+may be. In that case, we could take the $\gcd$ of $n$ and $kN$ to obtain the prime factorization. To find a multiplier
+$k$, we could use the Lehman method, which is a formalization of the discovery of these multipliers $k$ given $N$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Euler}
+\par Euler's method uses Legendre's congruence as well, but does not start with attempting to directly search for the
+difference of squares. In fact, it starts with the Lagrange identity, which states that:
+$$(x^2+Dy^2)(u^2+Dv^2) = \begin{cases} (xu+Dyv)^2 + D(yu-xv)^2 \\
+    (xu - Dyv)^2 + D(yu+xv)^2 \end{cases}$$
+
+% found it rather awkward to describe
+\par In other words, the identity states that a product of two integers of the form $a^2+Db^2$ is itself of that form,
+and also has two different representations in that form. Note that $D$ has to remain the same throughout all representations.
+Because this method relies on this identity, this method is only applicable to integers that are of this form.
+
+\par We can use the converse of this identity to find how to write $N$ as a product of two numbers of the form. The converse
+states that if we can find two different representations of the form $a^2+Db^2$, with the $\gcd$ of the product of the $b$
+values of each representation and $N$ being $1$, then $N$ can be written as a product of two integers of that same form.
+
+\begin{proof}
+\end{proof}
+
+\par Euler's method starts with the congruence $a^2d^2 \equiv -Db^2d^2 \equiv b^2c^2 \pmod{N}$. From here, we can see that
+Legendre's congruence can be used here. Then, we know the factors of $N$ will be $\gcd(N, ad-bc)$ and $\gcd(N,ad+bc)$.
+
+\par Because this method first requires us to know that our $N$ has two different representations of the form $a^2+Db^2$,
+we can start by searching for one representation first, using Fermat's method to do this. If no representations can
+be found, we can stop here and use another method to factorize $N$, for Euler's method is not applicable here.
+
 
 \section{Conclusion}\label{Conclusion}
 
