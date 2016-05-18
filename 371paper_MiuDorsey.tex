@@ -688,7 +688,9 @@ even attempting factorization.
 \par Another important consideration before attempting factorization is the form of the composite $N$. 
 $N$ of certain forms may lend themselves to certain specialized factorization methods that allow us to neatly avoid
 some of the difficulty of factorization, and identification of these $N$ before trying more expensive algorithms can
-help us to alleviate the computational workload involved.
+help us to alleviate the computational workload involved. On the topic of factoring methods that work for all numbers,
+there are two different kinds of general factoring methods: ones that find factors of $N$ in an approximate order of
+magnitude, and ones where the computational time does not depend on factor size.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -752,11 +754,26 @@ we can start by confirming that $1625$ is not a square. $\sqrt{N}$ is not an int
     \[x = m^2-N = 41^2 - 1625 = 56 \]
 
 $56$ is not a square, and so we repeat the process until we arrive at $x = 45, y = 20$. Notice that our $x,y$ are
-not primes. To find the prime factorization, we then apply Fermat's on $x,y$.
+not primes. However, we do know that $x+y$ is the smallest factor that is $\geq \sqrt{N}$, and $a-b = \frac{N}{a+b}$
+is the largest factor $\leq \sqrt{N}$. We would need to continue factoring the factors for a prime factorization.
+
 
 \par Note that the method is not very efficient. Fermat's method performs best in cases where $N$ is a product of
 two nearby integers, because the factorization can then be found in a relatively small number of rounds of the
 process described above.
+
+\par For an example of how well Fermat's method performs where $N$ is a product of two nearby integers, we have
+the example $1127843$. Then, we have the search for our $x,y$ below:
+\begin{center}
+    \begin{tabular}{ | c | c | }
+        \hline
+        $m$ & $z$ \\ \hline
+        $1062$ & $1$ \\
+        \hline
+    \end{tabular}
+\end{center}
+\par Thus, we know that $1127843=(1062^2-1^2)=(1062-1)(1062+1)=1061\cdot1063$. $1061,1063$ are the prime factors
+of our example.
 
 \par However, we can consider the shortcuts that have been developed since. One of them uses the observation that
 the last two digits of squares cannot be just any number. To use this fact, we can test only the numbers that have a
@@ -784,9 +801,6 @@ Because this method relies on this identity, this method is only applicable to i
 \par We can use the converse of this identity to find how to write $N$ as a product of two numbers of the form. The converse
 states that if we can find two different representations of the form $a^2+Db^2$, with the greatest common divisor of the product of the $b$
 values of each representation and $N$ being $1$, then $N$ can be written as a product of two integers of that same form.
-
-\begin{proof}
-\end{proof}
 
 \par Euler's method starts with the congruence $a^2d^2 \equiv -Db^2d^2 \equiv b^2c^2 \pmod{N}$. From here, we can see that
 Legendre's congruence can be used here. Then, we know the factors of $N$ will be $\gcd(N, ad-bc)$ and $\gcd(N,ad+bc)$.
@@ -839,7 +853,7 @@ in the Spring 2016 semester at Rochester Institute of Technology.
    \\
    \\ jm7481@rit.edu 
    \\
-   \\ Author of the Factorization section. Responsible for the proof provided within that section.
+   \\ Author of the Factorization section.
    
    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
